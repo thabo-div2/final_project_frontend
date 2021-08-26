@@ -6,6 +6,7 @@ fetch(baseURL)
 	.then((data) => {
 		console.log(data);
 		let patients = data.data;
+		localStorage.setItem("patients", patients);
 		conatiner.innerHTML = "";
 		patients.forEach((patient) => {
 			conatiner.innerHTML += `

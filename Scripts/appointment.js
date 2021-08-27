@@ -12,6 +12,11 @@ fetch(baseURL)
 			container.innerHTML += `
 			<div class="appointment">
 				<h3>Date: ${time.booking_date}</h3>
+				<p>Name: ${time.first_name} ${time.last_name}</p>
+				<p>Patient ID: ${time.patient_id}</p>
+				<p>Email: ${time.email}</p>
+				<p>Phone: +27 ${time.phone_num}</p>
+				<p>Type of Appointment: ${time.type}</p>
 			</div>
 			`;
 		});

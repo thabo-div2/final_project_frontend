@@ -17,7 +17,10 @@
 	<body>
 		<!-- Admin Register -->
 		<div class="admin-container">
-			<form onsubmit="adminLogin(); event.preventDefault()" id="form">
+			<div class="admin-heading">
+				<h1>Admin Registration</h1>
+			</div>
+			<form onsubmit="adminRegistration(); event.preventDefault()" id="form">
 				<div>
 					<label for="first_name">First Name:</label>
 					<input type="text" id="first_name" name="first_name" />

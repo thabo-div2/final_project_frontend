@@ -7,6 +7,7 @@ fetch(baseURL)
 	.then((data) => {
 		console.log(data);
 		let times = data.data;
+		localStorage.setItem("appointment", JSON.stringify(times));
 		container.innerHTML = "";
 		times.forEach((time) => {
 			container.innerHTML += `
@@ -17,6 +18,10 @@ fetch(baseURL)
 				<p>Email: ${time.email}</p>
 				<p>Phone: +27 ${time.phone_num}</p>
 				<p>Type of Appointment: ${time.type}</p>
+				<div class="time-btn">
+					<button>Delete Appointment</button>
+					<button>Edit Appointment</button>
+				</div>
 			</div>
 			`;
 		});

@@ -20,7 +20,9 @@ fetch(baseURL)
 				<p>Phone: +27 ${time.phone_num}</p>
 				<p>Type of Appointment: ${time.type}</p>
 				<div class="time-btn">
-					<button>Delete Appointment</button>
+					<button onclick="deleteAppointment(
+						${time.patient_id}
+					)">Delete Appointment</button>
 					<button>Edit Appointment</button>
 				</div>
 			</div>
@@ -55,6 +57,16 @@ function createAppointment() {
 				patient_id: patient_id,
 			}),
 		},
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+		});
+}
+
+function deleteAppointment(patient_id) {
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/delete-appointment/${patient_id}`,
 	)
 		.then((res) => res.json())
 		.then((data) => {

@@ -19,10 +19,21 @@ fetch(baseURL)
                     <p>Gender: ${patient.gender}</p>
                     <p>Identification Number: ${patient.id_num}</p>
                     <p>Cell Number: +27 ${patient.phone_num}</p>
+					<button onclick="editModal()">Edit Patient</button>
+					<div id="edit-modal-${patient.patient_id}" class="edit-modal">
+						<div class="edit-bg">
+							<span onclick="editModal()" class="close">&times;</span>
+							<form id="edit-form" onsubmit="editPatients">
+								<div>
+									<label for="email">Email</label>
+									<input type="text" id="email" name="email"/>
+								</div>
+							</form>
+						</div>
+					</div>
                     <button onclick="showModal(${patient.patient_id})" class="modal-btn">Show Appointment</button>
-					<div id="show-modal-${patient.patient_id}">
-						<div class="show-bg">
-							<span onclick="showModal(${patient.patient_id})>&times</span>
+					<div id="show-modal-${patient.patient_id}" class="show-modal">
+						<div class="show-bg-${patient.patient_id} show-bg">
 						</div>
 					</div>
                 </div>
@@ -53,7 +64,6 @@ function showModal(patient_id) {
 	document
 		.querySelector(`#show-modal-${patient_id}`)
 		.classList.toggle("active");
-	document.querySelector(`#show-modal-${patient_id}`).style = "none";
 	showAppointment(patient_id);
 }
 
@@ -65,10 +75,21 @@ function showAppointment(patient_id) {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
-			container.innerHTML = `
-			<div class="time-details>
-				<h3>${data.data.first_name}</h3>
-			</div>
-			`;
+			let times = data.data;
+			container.innerHTML = "";
+			console.log(times);
+			container.innerHTML += `
+			<span onclick="showModal(${times.patient_id})" class="close">&times;</span>
+			<div class="show-details">
+				<h3>Full name: ${times.first_name} ${times.last_name}</h3>
+				<p>Email: ${times.email}</p>
+				<p>Phone number: +27 ${times.phone_num}</p>
+				<p>Appointment date: ${times.booking_date}</p>
+			 </div>
+				`;
 		});
+}
+
+function editModal() {
+	document.querySelector(".edit-modal").classList.toggle("active");
 }

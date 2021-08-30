@@ -1,12 +1,13 @@
 const baseURL = "https://desolate-meadow-13744.herokuapp.com/view-appointment/";
 const container = document.querySelector("#timetable");
+let times = [];
 let d = new Date();
 
 fetch(baseURL)
 	.then((res) => res.json())
 	.then((data) => {
 		console.log(data);
-		let times = data.data;
+		times = data.data;
 		localStorage.setItem("appointment", JSON.stringify(times));
 		container.innerHTML = "";
 		times.forEach((time) => {
@@ -26,3 +27,37 @@ fetch(baseURL)
 			`;
 		});
 	});
+
+function appointmentModal() {
+	document.querySelector("#time-modal").classList.toggle("active");
+}
+
+function createAppointment() {
+	fname = document.querySelector("#first_name").value;
+	lname = document.querySelector("#last_name").value;
+	email = document.querySelector("#email").value;
+	phone_num = document.querySelector("#phone_num").value;
+	type = document.querySelector("#type").value;
+	booking_date = document.querySelector("#booking_date").value;
+	patient_id = times.patient_id;
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/appointment/${patient_id}`,
+		{
+			method: "POST",
+			body: JSON.stringify({
+				first_name: fname,
+				last_name: lname,
+				email: email,
+				phone_num: phone_num,
+				type: type,
+				booking_date: booking_date,
+				starting_date: d.now(),
+				patient_id: patient_id,
+			}),
+		},
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+		});
+}

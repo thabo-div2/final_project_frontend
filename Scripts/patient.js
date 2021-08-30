@@ -20,29 +20,21 @@ fetch(baseURL)
                     <p>Identification Number: ${patient.id_num}</p>
                     <p>Cell Number: +27 ${patient.phone_num}</p>
                     <button onclick="showAppointment()" class="modal-btn">Show Appointment</button>
-                    <div class="time-modal">
-                        <div class="time-bg">
-                        <span class="modal-close">X</span>
-                        </div>
-                    </div>
                 </div>
             </div>
             `;
 		});
 	});
 
-function showAppointment() {
-	let buttons = document.getElementsByClassName("modal-btn");
-	for (let i = 0; i < buttons.length; i++) {
-		let button = buttons[i];
-		let modalBg = document.querySelector(".time-modal");
-		let modalClose = document.querySelector(".modal-close");
+function deleteModal() {
+	document.querySelector("#modal").classList.toggle("active");
+}
 
-		button.addEventListener("click", function () {
-			modalBg.classList.add("time-modal-active");
-		});
-	}
-	fetch(`https://desolate-meadow-13744.herokuapp.com/view-appointment/`)
+function deletePatient() {
+	const patient_id = document.querySelector("#delete-filter").value;
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/delete-patient/${patient_id}`,
+	)
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);

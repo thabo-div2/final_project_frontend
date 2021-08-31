@@ -28,5 +28,6 @@ function registerPatient() {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			localStorage.setItem("patients", data);
 		});
 }

@@ -23,11 +23,20 @@ fetch(baseURL)
 					<div id="edit-modal-${patient.patient_id}" class="edit-modal">
 						<div class="edit-bg">
 							<span onclick="editModal()" class="close">&times;</span>
-							<form id="edit-form" onsubmit="editPatients">
+							<form id="edit-form" onsubmit="editPatients(${patient.patient_id}); event.preventDefault()">
 								<div>
 									<label for="email">Email</label>
 									<input type="text" id="email" name="email"/>
 								</div>
+								<div>
+									<label for="address">Address</label>
+									<input type="text" id="address" name="address"/>
+								</div>
+								<div>
+									<label for="phone_num">Phone Number:</label>
+									<input type="text" id="phone_num" name="phone_num"/>
+								</div>
+								<button type="submit">Edit Info</button>
 							</form>
 						</div>
 					</div>
@@ -35,6 +44,10 @@ fetch(baseURL)
 					<div id="show-modal-${patient.patient_id}" class="show-modal">
 						<div class="show-bg-${patient.patient_id} show-bg">
 						</div>
+					</div>
+					<button onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
+					<div id="show-illness-${patient.patient_id}" class="show-ill">
+						<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
 					</div>
                 </div>
             </div>
@@ -92,4 +105,57 @@ function showAppointment(patient_id) {
 
 function editModal() {
 	document.querySelector(".edit-modal").classList.toggle("active");
+}
+
+function editPatients(patient_id) {
+	email = document.querySelector("#email").value;
+	address = document.querySelector("#address").value;
+	phone_num = document.querySelector("#phone_num").value;
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/edit-patient/${patient_id}`,
+		{
+			method: "PUT",
+			body: JSON.stringify({
+				email: email,
+				address: address,
+				phone_num: phone_num,
+			}),
+			headers: {
+				"Content-type": "application/json; charset=UTF-8",
+			},
+		},
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+		});
+}
+
+function illModal(patient_id) {
+	document
+		.querySelector(`#show-illness-${patient_id}`)
+		.classList.toggle("active");
+	renderIllness(patient_id);
+}
+
+function renderIllness(patient_id) {
+	const illness = document.querySelector(".show-ill-bg");
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/view-illness/${patient_id}`,
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data.data);
+			let ill = data.data;
+			illness.innerHTML = "";
+			console.log(ill);
+			illness.innerHTML += `
+			<span onclick="illModal(${ill.patient_id})" class="close">&times;</span>
+			<div class="show-details">
+				<h3>Name of disease: ${ill.name}</h3>
+				<p>Description: ${ill.description}</p>
+				<p>Type: ${ill.type}</p>
+			</div>
+			`;
+		});
 }

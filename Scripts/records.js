@@ -13,6 +13,9 @@ fetch(baseURL)
                 <p>Name: ${record.name}</p>
                 <p>Type: ${record.type}</p>
                 <p>Description: ${record.description}</p>
+                <button>Delete Record</button>
+                <button>Edit Record</button>
+                <button>View Patient</button>
             </div>
             `;
 		});

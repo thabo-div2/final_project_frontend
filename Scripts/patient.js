@@ -19,6 +19,7 @@ fetch(baseURL)
                     <p>Gender: ${patient.gender}</p>
                     <p>Identification Number: ${patient.id_num}</p>
                     <p>Cell Number: +27 ${patient.phone_num}</p>
+					<button onclick="deletePatient(${patient.patient_id})">Delete Patient</button>
 					<button onclick="editModal()">Edit Patient</button>
 					<div id="edit-modal-${patient.patient_id}" class="edit-modal">
 						<div class="edit-bg">
@@ -55,12 +56,7 @@ fetch(baseURL)
 		});
 	});
 
-function deleteModal() {
-	document.querySelector("#modal").classList.toggle("active");
-}
-
-function deletePatient() {
-	const patient_id = document.querySelector("#delete-filter").value;
+function deletePatient(patient_id) {
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/delete-patient/${patient_id}`,
 		{

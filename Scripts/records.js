@@ -13,30 +13,32 @@ fetch(baseURL)
                 <p>Name: ${record.name}</p>
                 <p>Type: ${record.type}</p>
                 <p>Description: ${record.description}</p>
-                <button onclick="deleteRecord(${record.patient_id})">Delete Record</button>
-                <button onclick="editModal(${record.patient_id})">Edit Record</button>
-                <div id="edit-modal-${record.patient_id}" class="edit-modal">
-                    <div class="edit-bg-${record.patient_id} edit-bg">
-                        <span onclick="editModal(${record.patient_id})" class="close">&times</span>
-                        <div class="edit-form-fix">
-							<form onsubmit="editIllness(${record.patient_id}); event.preventDefault()" id="edit-form">
-                            <div>
-                                <input type="text" id="name" name="name" placeholder="Name"/>
-                            </div>
-                            <div>
-                                <input type="text" id="description" name="description" placeholder="Description"/>
-                            </div>
-                            <div>
-                                <input type="text" id="type" name="type" placeholder="Type"/>
-                            </div>
-                            <button type="submit">Edit Info</button>
-                        	</form>
+                <div class="record-btn">
+					<button onclick="deleteRecord(${record.patient_id})">Delete Record</button>
+					<button onclick="editModal(${record.patient_id})">Edit Record</button>
+					<div id="edit-modal-${record.patient_id}" class="edit-modal">
+						<div class="edit-bg-${record.patient_id} edit-bg">
+							<span onclick="editModal(${record.patient_id})" class="close">&times</span>
+							<div class="edit-form-fix">
+								<form onsubmit="editIllness(${record.patient_id}); event.preventDefault()" id="edit-form">
+								<div>
+									<input type="text" id="name" name="name" placeholder="Name"/>
+								</div>
+								<div>
+									<input type="text" id="description" name="description" placeholder="Description"/>
+								</div>
+								<div>
+									<input type="text" id="type" name="type" placeholder="Type"/>
+								</div>
+								<button type="submit">Edit Info</button>
+								</form>
+							</div>
 						</div>
-                    </div>
-                </div>
-                <button onclick="viewModal(${record.patient_id})">View Patient</button>
-				<div id="view-modal-${record.patient_id}" class="view-modal">
-					<div class="view-bg-${record.patient_id} view-bg"></div>
+					</div>
+					<button onclick="viewModal(${record.patient_id})">View Patient</button>
+					<div id="view-modal-${record.patient_id}" class="view-modal">
+						<div class="view-bg-${record.patient_id} view-bg"></div>
+					</div>
 				</div>
             </div>
             `;

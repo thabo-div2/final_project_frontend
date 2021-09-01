@@ -80,3 +80,14 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.record-btn {
+	display: flex;
+	justify-content: space-between;
+}
+
+.record-btn button {
+	border-radius: 30px;
+	border: 1px solid;
+	padding: 3px;
+}

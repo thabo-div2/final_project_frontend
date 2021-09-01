@@ -7,3 +7,31 @@
 body {
 	font-family: "Nunito", sans-serif;
 }
+
+.navbar {
+	position: fixed;
+	z-index: 100;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: row;
+	list-style: none;
+	position: fixed;
+	z-index: 100;
+}
+
+.nav-link {
+	margin: 10px;
+	text-decoration: none;
+}
+
+.nav-link a {
+	text-decoration: none;
+	transition: 0.3s ease-in-out;
+}
+
+.nav-link a:hover {
+	color: #ed2d34;
+}

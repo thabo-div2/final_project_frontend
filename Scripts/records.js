@@ -18,24 +18,26 @@ fetch(baseURL)
                 <div id="edit-modal-${record.patient_id}" class="edit-modal">
                     <div class="edit-bg-${record.patient_id} edit-bg">
                         <span onclick="editModal(${record.patient_id})" class="close">&times</span>
-                        <form onsubmit="editIllness(${record.patient_id}); event.preventDefault()" id="edit-form">
+                        <div class="edit-form-fix">
+							<form onsubmit="editIllness(${record.patient_id}); event.preventDefault()" id="edit-form">
                             <div>
-                                <label for="name">Name: </label>
-                                <input type="text" id="name" name="name"/>
+                                <input type="text" id="name" name="name" placeholder="Name"/>
                             </div>
                             <div>
-                                <label for="description">Description</label>
-                                <input type="text" id="description" name="description" />
+                                <input type="text" id="description" name="description" placeholder="Description"/>
                             </div>
                             <div>
-                                <label for="type">Type</label>
-                                <input type="text" id="type" name="type" />
+                                <input type="text" id="type" name="type" placeholder="Type"/>
                             </div>
                             <button type="submit">Edit Info</button>
-                        </form>
+                        	</form>
+						</div>
                     </div>
                 </div>
-                <button>View Patient</button>
+                <button onclick="viewModal(${record.patient_id})">View Patient</button>
+				<div id="view-modal-${record.patient_id}" class="view-modal">
+					<div class="view-bg-${record.patient_id} view-bg"></div>
+				</div>
             </div>
             `;
 		});
@@ -86,5 +88,36 @@ function editIllness(patient_id) {
 			} else {
 				alert("Error!!!");
 			}
+		});
+}
+
+function viewModal(patient_id) {
+	document
+		.querySelector(`#view-modal-${patient_id}`)
+		.classList.toggle("active");
+	viewPatient(patient_id);
+}
+
+function viewPatient(patient_id) {
+	let p_container = document.querySelector(".view-bg");
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/view-patient/${patient_id}`,
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			let patient = data.data;
+			p_container.innerHTML = "";
+			p_container.innerHTML += `
+			<span onclick="viewModal(${patient.patient_id})" class="close">&times</span>
+			<div class="patient-detail">
+				<h3>Full Name: ${patient.first_name} ${patient.last_name}</h3>
+				<p>Gender: ${patient.gender}</p>
+				<p>Address: ${patient.address}</p>
+				<p>Email: ${patient.email}</p>
+				<p>ID Number: ${patient.id_num}</p>
+				<p>Phone Number: ${patient.phone_num}</p>
+			</div>
+			`;
 		});
 }

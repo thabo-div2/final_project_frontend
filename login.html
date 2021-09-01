@@ -13,6 +13,7 @@
 		/>
 		<!-- My CSS -->
 		<link rel="stylesheet" href="./Styles/nav.css" />
+		<link rel="stylesheet" href="./Styles/login.css" />
 	</head>
 	<body>
 		<!-- Nav Bar -->
@@ -22,24 +23,26 @@
 			</ul>
 		</nav>
 		<!-- Login Page -->
-		<div class="login-form">
-			<form onsubmit="loginAdmin(); event.preventDefault()" id="form">
-				<div>
-					<label for="username">Username:</label>
-					<input
-						type="text"
-						id="username"
-						name="username"
-						placeholder="eg. Dr.Teeth"
-						required
-					/>
-					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" required />
-				</div>
-				<button type="submit">Log In</button>
-			</form>
-			<div><a href="./admin-register.html">Register a New Admin</a></div>
-		</div>
+		<section>
+			<div class="login-form">
+				<form onsubmit="loginAdmin(); event.preventDefault()" id="form">
+					<div>
+						<label for="username">Username:</label>
+						<input
+							type="text"
+							id="username"
+							name="username"
+							placeholder="eg. Dr.Teeth"
+							required
+						/>
+						<label for="password">Password:</label>
+						<input type="password" id="password" name="password" required />
+					</div>
+					<button type="submit">Log In</button>
+				</form>
+				<div><a href="./admin-register.html">Register a New Admin</a></div>
+			</div>
+		</section>
 		<!-- My Scripts -->
 		<script src="./Scripts/login.js"></script>
 	</body>

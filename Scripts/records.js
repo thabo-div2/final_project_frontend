@@ -1,5 +1,5 @@
 const baseURL = "https://desolate-meadow-13744.herokuapp.com/view-illness/";
-let container = document.querySelector("#records");
+let container = document.querySelector(".records-container");
 fetch(baseURL)
 	.then((res) => res.json())
 	.then((data) => {

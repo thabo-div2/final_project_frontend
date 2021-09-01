@@ -25,35 +25,37 @@
 		<!-- Login Page -->
 		<section>
 			<div class="login-form">
-				<div>
-					<h1>Login</h1>
+				<div class="login-container">
+					<div class="login-heading">
+						<h1>Login</h1>
+					</div>
+					<form onsubmit="loginAdmin(); event.preventDefault()" id="form">
+						<div>
+							<label for="username">Username:</label>
+							<input
+								type="text"
+								id="username"
+								name="username"
+								placeholder="Username"
+								required
+							/>
+						</div>
+						<div>
+							<label for="password">Password:</label>
+							<input
+								type="password"
+								id="password"
+								name="password"
+								placeholder="Password"
+								required
+							/>
+						</div>
+						<div>
+							<button type="submit">Log In</button>
+						</div>
+					</form>
+					<div><a href="./admin-register.html">Register a New Admin</a></div>
 				</div>
-				<form onsubmit="loginAdmin(); event.preventDefault()" id="form">
-					<div>
-						<label for="username">Username:</label>
-						<input
-							type="text"
-							id="username"
-							name="username"
-							placeholder="Username"
-							required
-						/>
-					</div>
-					<div>
-						<label for="password">Password:</label>
-						<input
-							type="password"
-							id="password"
-							name="password"
-							placeholder="Password"
-							required
-						/>
-					</div>
-					<div>
-						<button type="submit">Log In</button>
-					</div>
-				</form>
-				<div><a href="./admin-register.html">Register a New Admin</a></div>
 			</div>
 		</section>
 		<!-- My Scripts -->

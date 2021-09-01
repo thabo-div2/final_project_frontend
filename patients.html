@@ -17,19 +17,29 @@
 	</head>
 	<body>
 		<!-- Nav Bar -->
-		<nav>
-			<ul>
-				<li><a href="./admin-register.html">Admin Registration</a></li>
-				<li><a href="./register.html">Register Patients</a></li>
-				<li><a href="./appointments.html">Show Appointments</a></li>
-				<li><a href="./records.html">Show Records</a></li>
+		<nav class="navbar">
+			<ul class="nav-links">
+				<li class="nav-link">
+					<a href="./admin-register.html">Admin Registration</a>
+				</li>
+				<li class="nav-link">
+					<a href="./register.html">Register Patients</a>
+				</li>
+				<li class="nav-link">
+					<a href="./appointments.html">Show Appointments</a>
+				</li>
+				<li class="nav-link"><a href="./records.html">Show Records</a></li>
 			</ul>
 		</nav>
 		<!-- View Patients -->
-		<div class="patient-heading">
-			<h1>View Current Patients</h1>
+		<div class="patients">
+			<div class="patient-container">
+				<div class="patient-heading">
+					<h1>View Current Patients</h1>
+				</div>
+				<div id="view-patients"></div>
+			</div>
 		</div>
-		<div id="view-patients"></div>
 		<!-- My Scripts -->
 		<script src="./Scripts/patient.js"></script>
 	</body>

@@ -27,15 +27,15 @@ fetch(baseURL)
 							<form id="edit-form" onsubmit="editPatients(${patient.patient_id}); event.preventDefault()">
 								<div>
 									<label for="email">Email</label>
-									<input type="text" id="email" name="email"/>
+									<input type="text" id="email" name="email" placeholder="Email" required />
 								</div>
 								<div>
 									<label for="address">Address</label>
-									<input type="text" id="address" name="address"/>
+									<input type="text" id="address" name="address" placeholder="Address" required />
 								</div>
 								<div>
 									<label for="phone_num">Phone Number:</label>
-									<input type="text" id="phone_num" name="phone_num"/>
+									<input type="text" id="phone_num" name="phone_num" placeholder="Phone Number" required />
 								</div>
 								<button type="submit">Edit Info</button>
 							</form>

@@ -5,6 +5,16 @@
 	align-items: center;
 	width: 100vw;
 	min-height: 100vh;
+	padding: 10px;
+}
+
+.login-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: whitesmoke;
+	padding: 10px;
 }
 
 #form {
@@ -12,4 +22,5 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 10px;
 }

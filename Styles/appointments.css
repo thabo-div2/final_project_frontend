@@ -1,3 +1,26 @@
+.time-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+	min-height: 100vh;
+}
+
+.time-fix {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: whitesmoke;
+}
+
+#timetable {
+	display: grid;
+	place-items: center;
+	grid-template-columns: repeat(3, 1fr);
+}
+
 /* Model */
 #time-modal {
 	display: none; /* Hidden by default */

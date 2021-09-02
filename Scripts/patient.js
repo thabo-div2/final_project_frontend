@@ -20,22 +20,22 @@ fetch(baseURL)
                     <p>Identification Number: ${patient.id_num}</p>
                     <p>Cell Number: +27 ${patient.phone_num}</p>
 					<button onclick="deletePatient(${patient.patient_id})">Delete Patient</button>
-					<button onclick="editModal()">Edit Patient</button>
+					<button onclick="editModal(${patient.patient_id})">Edit Patient</button>
 					<div id="edit-modal-${patient.patient_id}" class="edit-modal">
 						<div class="edit-bg">
 							<span onclick="editModal()" class="close">&times;</span>
 							<form id="edit-form" onsubmit="editPatients(${patient.patient_id}); event.preventDefault()">
 								<div>
 									<label for="email">Email</label>
-									<input type="text" id="email" name="email" placeholder="Email" required />
+									<input type="text" id="email-${patient.patient_id}" name="email" placeholder="Email" required />
 								</div>
 								<div>
 									<label for="address">Address</label>
-									<input type="text" id="address" name="address" placeholder="Address" required />
+									<input type="text" id="address-${patient.patient_id}" name="address" placeholder="Address" required />
 								</div>
 								<div>
 									<label for="phone_num">Phone Number:</label>
-									<input type="text" id="phone_num" name="phone_num" placeholder="Phone Number" required />
+									<input type="text" id="phone_num-${patient.patient_id}" name="phone_num" placeholder="Phone Number" required />
 								</div>
 								<button type="submit">Edit Info</button>
 							</form>
@@ -49,6 +49,39 @@ fetch(baseURL)
 					<button onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
 					<div id="show-illness-${patient.patient_id}" class="show-ill">
 						<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
+					</div>
+					<button onclick="addModal(${patient.patient_id})">Add Appointment</button>
+					<div id="add-appoint-${patient.patient_id}" class="add-appoint">
+						<div class="add-appoint-bg-${patient.patient_id} add-appoint-bg">
+							<span onclick="addModal(${patient.patient_id})" class="close">&times;</span>
+							<form id="add-form" onsubmit="addAppointment(${patient.patient_id}); event.preventDefault()">
+								<div>
+									<label for="first_name">First Name:</label>
+									<input type="text" id="first_name-${patient.patient_id}" name="first_name" placeholder="First Name" required />
+								</div>
+								<div>
+									<label for="last_name">Last Name:</label>
+									<input type="text" id="last_name-${patient.patient_id}" name="last_name" placeholder="Last Name" required />
+								</div>
+								<div>
+									<label for="email">Email:</label>
+									<input type="text" id="email-${patient.patient_id}" name="email" placeholder="Email" required />
+								</div>
+								<div>
+									<label for="phone_num">Phone Number:</label>
+									<input type="number" id="phone_num-${patient.patient_id}" name="phone_num" placeholder="Phone Number" required />
+								</div>
+								<div>
+									<label for="type">Type:</label>
+									<input type="text" id="type-${patient.patient_id}" name="type" placeholder="Type" required />
+								</div>
+								<div>
+									<label for="booking_date">Bookingn Date:</label>
+									<input type="text" id="booking_date-${patient.patient_id}" name="booking_date" />
+								</div>
+								<button type="submit">Add Appointment</button>
+							</form>
+						</div>
 					</div>
                 </div>
             </div>
@@ -99,14 +132,16 @@ function showAppointment(patient_id) {
 		});
 }
 
-function editModal() {
-	document.querySelector(".edit-modal").classList.toggle("active");
+function editModal(patient_id) {
+	document
+		.querySelector(`#edit-modal-${patient_id}`)
+		.classList.toggle("active");
 }
 
 function editPatients(patient_id) {
-	email = document.querySelector("#email").value;
-	address = document.querySelector("#address").value;
-	phone_num = document.querySelector("#phone_num").value;
+	email = document.querySelector(`#email-${patient_id}`).value;
+	address = document.querySelector(`#address-${patient_id}`).value;
+	phone_num = document.querySelector(`#phone_num-${patient_id}`).value;
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/edit-patient/${patient_id}`,
 		{
@@ -124,6 +159,9 @@ function editPatients(patient_id) {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			if (data.status_code == 200) {
+				window.location.reload();
+			}
 		});
 }
 
@@ -153,5 +191,43 @@ function renderIllness(patient_id) {
 				<p>Type: ${ill.type}</p>
 			</div>
 			`;
+		});
+}
+
+function addModal(patient_id) {
+	document
+		.querySelector(`#add-appoint-${patient_id}`)
+		.classList.toggle("active");
+}
+
+function addAppointment(patient_id) {
+	const first_name = document.querySelector(`#first_name-${patient_id}`).value;
+	const last_name = document.querySelector(`#last_name-${patient_id}`).value;
+	const email = document.querySelector(`#email-${patient_id}`).value;
+	const phone_num = document.querySelector(`#phone_num-${patient_id}`).value;
+	const type = document.querySelector(`#type-${patient_id}`).value;
+	const booking_date = document.querySelector(
+		`#booking_date-${patient_id}`,
+	).value;
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/appointment/${patient_id}`,
+		{
+			method: "POST",
+			body: JSON.stringify({
+				first_name: first_name,
+				last_name: last_name,
+				email: email,
+				phone_num: phone_num,
+				type: type,
+				booking_date: booking_date,
+			}),
+			headers: {
+				"Content-type": "application/json; charset=UTF-8",
+			},
+		},
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
 		});
 }

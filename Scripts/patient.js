@@ -77,8 +77,11 @@ fetch(baseURL)
 								</div>
 								<div>
 									<label for="booking_date">Bookingn Date:</label>
-									<input type="text" id="booking_date-${patient.patient_id}" name="booking_date" />
+									<input type="date" id="booking_date-${patient.patient_id}" name="booking_date" placeholder="Booking Date" required />
 								</div>
+								<div>
+									<label for="start_date">Start Date:</label>
+									<input type="date" id="start_date-${patient.patient_id} name="start_date" placeholder="Start Date" required />
 								<button type="submit">Add Appointment</button>
 							</form>
 						</div>
@@ -209,6 +212,7 @@ function addAppointment(patient_id) {
 	const booking_date = document.querySelector(
 		`#booking_date-${patient_id}`,
 	).value;
+	const start_date = document.querySelector(`#start_date-${patient_id}`).value;
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/appointment/${patient_id}`,
 		{
@@ -220,6 +224,7 @@ function addAppointment(patient_id) {
 				phone_num: phone_num,
 				type: type,
 				booking_date: booking_date,
+				start_date: start_date,
 			}),
 			headers: {
 				"Content-type": "application/json; charset=UTF-8",

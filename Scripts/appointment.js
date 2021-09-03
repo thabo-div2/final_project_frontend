@@ -21,7 +21,30 @@ fetch(baseURL)
 				<p>Type of Appointment: ${time.type}</p>
 				<div class="time-btn">
 					<button onclick="deleteAppointment(${time.patient_id})">Delete Appointment</button>
-					<button>Edit Appointment</button>
+					<button onclick="editModal(${time.patient_id})">Edit Appointment</button>
+					<div id="edit-appoint-${time.patient_id}" class="edit-appoint">
+						<div class="edit-bg-${time.patient_id} edit-bg">
+							<span onclick="editModal(${time.patient_id})" class="close">&times;</span>
+							<form id="appoint-form" onsubmit="editAppointment(${time.patient_id}); event.preventDefault()">
+								<div>
+									<label for="email">Email:</label>
+									<input type="text" id="email-${time.patient_id}" name="email" placeholder="Email" required /> 
+								</div>
+								<div>
+									<label for="phone_num">Phone Number:</label>
+									<input type="number" id="phone_num-${time.patient_id}" name="phone_num" placeholder="Phone Number" required /> 
+								</div>
+								<div>
+									<label for="type">Type of Appointment:</label>
+									<input type="text" id="type-${time.patient_id}" name="type" placeholder="Type of Appointment" required /> 
+								</div>
+								<div>
+									<label for="booking_date">Email:</label>
+									<input type="date" id="booking_date-${time.patient_id}" name="booking_date" placeholder="Booking Date" required /> 
+								</div>
+							</form>
+						</div>
+					</div
 				</div>
 			</div>
 			`;
@@ -67,6 +90,40 @@ function deleteAppointment(patient_id) {
 		`https://desolate-meadow-13744.herokuapp.com/delete-appointment/${patient_id}`,
 		{
 			method: "DELETE",
+		},
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+		});
+}
+
+function editModal(patient_id) {
+	document
+		.querySelector(`#edit-appoint-${patient_id}`)
+		.classList.toggle("active");
+}
+
+function editAppointment(patient_id) {
+	const email = document.querySelector(`#email-${patient_id}`).value;
+	const phone_num = document.querySelector(`#phone_num-${patient_id}`).value;
+	const type = document.querySelector(`#type-${patient_id}`).value;
+	const booking_date = document.querySelector(
+		`#booking_date-${patient_id}`,
+	).value;
+	fetch(
+		`https://desolate-meadow-13744.herokuapp.com/edit-appointment/${patient_id}`,
+		{
+			method: "PUT",
+			body: JSON.stringify({
+				email: email,
+				phone_num: phone_num,
+				type: type,
+				booking_date: booking_date,
+			}),
+			headers: {
+				"Content-type": "application/json; charset=UTF-8",
+			},
 		},
 	)
 		.then((res) => res.json())

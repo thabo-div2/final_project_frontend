@@ -37,6 +37,28 @@
 				<div class="patient-heading">
 					<h1>View Current Patients</h1>
 				</div>
+				<div class="filter-container">
+					<label for="filter">Search</label>
+					<input
+						type="text"
+						id="filter"
+						name="filter"
+						placeholder="Search..."
+					/>
+					<button class="filter-btn" onclick="searchForProducts()">
+						Search
+					</button>
+				</div>
+				<div class="sort-btn">
+					<p>Sort By:</p>
+					<select name="sort-filter" id="sort-filter">
+						<option value="date">Date</option>
+						<option value="show-all">Show All</option>
+						<option value="name">Name</option>
+						<option value="birth-date">Birth Date</option>
+					</select>
+					<button>Sort</button>
+				</div>
 				<div id="view-patients"></div>
 			</div>
 		</div>

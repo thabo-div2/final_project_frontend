@@ -13,10 +13,26 @@
 	min-height: 100vh;
 }
 
+.records-fix {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #fefefe;
+	padding: 10px;
+}
+
 .records-container {
 	display: grid;
 	place-items: center;
 	grid-template-columns: repeat(3, 1fr);
+	padding: 10px;
+}
+
+.records-details {
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid;
 }
 
 .edit-modal {

@@ -42,6 +42,7 @@ fetch(baseURL)
 									<label for="booking_date">Email:</label>
 									<input type="date" id="booking_date-${time.patient_id}" name="booking_date" placeholder="Booking Date" required /> 
 								</div>
+								<button type="submit">Edit Info</button>
 							</form>
 						</div>
 					</div

@@ -1,13 +1,18 @@
 const baseURL = "https://desolate-meadow-13744.herokuapp.com/view-illness/";
-let container = document.querySelector(".records-container");
+let records = [];
 fetch(baseURL)
 	.then((res) => res.json())
 	.then((data) => {
 		console.log(data);
-		container.innerHTML = "";
-		let records = data.data;
-		records.forEach((record) => {
-			container.innerHTML += `
+		records = data.data;
+		renderRecords(records);
+	});
+
+function renderRecords(records) {
+	let container = document.querySelector(".records-container");
+	container.innerHTML = "";
+	records.forEach((record) => {
+		container.innerHTML += `
             <div class="records-details">
                 <h3>Patient ID: ${record.patient_id}</h3>
                 <p>Name: ${record.name}</p>
@@ -20,15 +25,15 @@ fetch(baseURL)
 						<div class="edit-bg-${record.patient_id} edit-bg">
 							<span onclick="editModal(${record.patient_id})" class="close">&times</span>
 							<div class="edit-form-fix">
-								<form onsubmit="editIllness(${record.patient_id}); event.preventDefault()" id="edit-form">
+								<form onsubmit="editIllness(${record.patient_id}); event.preventDefault()" id="edit-form-${record.patient_id}">
 								<div>
-									<input type="text" id="name" name="name" placeholder="Name"/>
+									<input type="text" id="name-${record.patient_id}" name="name" placeholder="Name"/>
 								</div>
 								<div>
-									<input type="text" id="description" name="description" placeholder="Description"/>
+									<input type="text" id="description-${record.patient_id}" name="description" placeholder="Description"/>
 								</div>
 								<div>
-									<input type="text" id="type" name="type" placeholder="Type"/>
+									<input type="text" id="type-${record.patient_id}" name="type" placeholder="Type"/>
 								</div>
 								<button type="submit">Edit Info</button>
 								</form>
@@ -42,8 +47,8 @@ fetch(baseURL)
 				</div>
             </div>
             `;
-		});
 	});
+}
 
 function deleteRecord(patient_id) {
 	fetch(
@@ -65,9 +70,11 @@ function editModal(patient_id) {
 }
 
 function editIllness(patient_id) {
-	const i_name = document.querySelector("#name").value;
-	const description = document.querySelector("#description").value;
-	const i_type = document.querySelector("#type").value;
+	const i_name = document.querySelector(`#name-${record.patient_id}`).value;
+	const description = document.querySelector(
+		`#description-${record.patient_id}`,
+	).value;
+	const i_type = document.querySelector(`#type-${record.patient_id}`).value;
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/edit-illness/${patient_id}`,
 		{
@@ -101,7 +108,7 @@ function viewModal(patient_id) {
 }
 
 function viewPatient(patient_id) {
-	let p_container = document.querySelector(".view-bg");
+	let p_container = document.querySelector(`.view-bg-${patient_id}`);
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/view-patient/${patient_id}`,
 	)
@@ -122,4 +129,14 @@ function viewPatient(patient_id) {
 			</div>
 			`;
 		});
+}
+
+function searchIllness() {
+	let searchTerm = document.querySelector("#filter").value;
+	console.log(searchTerm);
+	let searchedRecords = records.filter((record) =>
+		record.name.toLowerCase().includes(searchTerm.toLowerCase()),
+	);
+	console.log(searchedRecords);
+	renderRecords(searchedRecords);
 }

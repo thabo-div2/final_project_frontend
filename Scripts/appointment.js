@@ -1,5 +1,4 @@
 const baseURL = "https://desolate-meadow-13744.herokuapp.com/view-appointment/";
-const container = document.querySelector("#timetable");
 let times = [];
 let d = new Date();
 
@@ -9,48 +8,53 @@ fetch(baseURL)
 		console.log(data);
 		times = data.data;
 		localStorage.setItem("appointment", JSON.stringify(times));
-		container.innerHTML = "";
-		times.forEach((time) => {
-			container.innerHTML += `
-			<div class="appointment">
-				<h3>Date: ${time.booking_date}</h3>
-				<p>Name: ${time.first_name} ${time.last_name}</p>
-				<p>Patient ID: ${time.patient_id}</p>
-				<p>Email: ${time.email}</p>
-				<p>Phone: +27 ${time.phone_num}</p>
-				<p>Type of Appointment: ${time.type}</p>
-				<div class="time-btn">
-					<button onclick="deleteAppointment(${time.patient_id})">Delete Appointment</button>
-					<button onclick="editModal(${time.patient_id})">Edit Appointment</button>
-					<div id="edit-appoint-${time.patient_id}" class="edit-appoint">
-						<div class="edit-bg-${time.patient_id} edit-bg">
-							<span onclick="editModal(${time.patient_id})" class="close">&times;</span>
-							<form id="appoint-form" onsubmit="editAppointment(${time.patient_id}); event.preventDefault()">
-								<div>
-									<label for="email">Email:</label>
-									<input type="text" id="email-${time.patient_id}" name="email" placeholder="Email" required /> 
-								</div>
-								<div>
-									<label for="phone_num">Phone Number:</label>
-									<input type="number" id="phone_num-${time.patient_id}" name="phone_num" placeholder="Phone Number" required /> 
-								</div>
-								<div>
-									<label for="type">Type of Appointment:</label>
-									<input type="text" id="type-${time.patient_id}" name="type" placeholder="Type of Appointment" required /> 
-								</div>
-								<div>
-									<label for="booking_date">Email:</label>
-									<input type="date" id="booking_date-${time.patient_id}" name="booking_date" placeholder="Booking Date" required /> 
-								</div>
-								<button type="submit">Edit Info</button>
-							</form>
-						</div>
-					</div
-				</div>
-			</div>
-			`;
-		});
+		renderAppointment(times);
 	});
+
+function renderAppointment(times) {
+	let container = document.querySelector("#timetable");
+	container.innerHTML = "";
+	times.forEach((time) => {
+		container.innerHTML += `
+				<div class="appointment">
+					<h3>Date: ${time.booking_date}</h3>
+					<p>Name: ${time.first_name} ${time.last_name}</p>
+					<p>Patient ID: ${time.patient_id}</p>
+					<p>Email: ${time.email}</p>
+					<p>Phone: +27 ${time.phone_num}</p>
+					<p>Type of Appointment: ${time.type}</p>
+					<div class="time-btn">
+						<button onclick="deleteAppointment(${time.patient_id})">Delete Appointment</button>
+						<button onclick="editModal(${time.patient_id})">Edit Appointment</button>
+						<div id="edit-appoint-${time.patient_id}" class="edit-appoint">
+							<div class="edit-bg-${time.patient_id} edit-bg">
+								<span onclick="editModal(${time.patient_id})" class="close">&times;</span>
+								<form id="appoint-form-${time.patient_id}" onsubmit="editAppointment(${time.patient_id}); event.preventDefault()">
+									<div>
+										<label for="email">Email:</label>
+										<input type="text" id="email-${time.patient_id}" name="email" placeholder="Email" required /> 
+									</div>
+									<div>
+										<label for="phone_num">Phone Number:</label>
+										<input type="number" id="phone_num-${time.patient_id}" name="phone_num" placeholder="Phone Number" required /> 
+									</div>
+									<div>
+										<label for="type">Type of Appointment:</label>
+										<input type="text" id="type-${time.patient_id}" name="type" placeholder="Type of Appointment" required /> 
+									</div>
+									<div>
+										<label for="booking_date">Email:</label>
+										<input type="date" id="booking_date-${time.patient_id}" name="booking_date" placeholder="Booking Date" required /> 
+									</div>
+									<button type="submit">Edit Info</button>
+								</form>
+							</div>
+						</div
+					</div>
+				</div>
+				`;
+	});
+}
 
 function appointmentModal() {
 	document.querySelector("#time-modal").classList.toggle("active");
@@ -131,4 +135,14 @@ function editAppointment(patient_id) {
 		.then((data) => {
 			console.log(data);
 		});
+}
+
+function searchAppointment() {
+	let searchTerm = document.querySelector("#filter").value;
+	console.log(searchTerm);
+	let searchedAppointments = times.filter((time) =>
+		time.first_name.toLowerCase().includes(searchTerm.toLowerCase()),
+	);
+	console.log(searchedAppointments);
+	renderAppointment(searchedAppointments);
 }

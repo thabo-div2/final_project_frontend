@@ -50,14 +50,22 @@
 					</button>
 				</div>
 				<div class="sort-btn">
-					<p>Sort By:</p>
-					<select name="sort-filter" id="sort-filter">
-						<option value="date">Date</option>
-						<option value="show-all">Show All</option>
-						<option value="name">Name</option>
-						<option value="birth-date">Birth Date</option>
-					</select>
-					<button>Sort</button>
+					<button onclick="sortNameAsc()">Sort by First name: Ascending</button>
+					<button onclick="sortNameDesc()">
+						Sort by First name: Descending
+					</button>
+					<button onclick="sortSurnameAsc()">
+						Sort by Last name: Ascending
+					</button>
+					<button onclick="sortSurnameDesc()">
+						Sort by Last Name: Descending
+					</button>
+					<button onclick="sortPatientIDAsc()">
+						Sort by Patient ID: Ascending
+					</button>
+					<button onclick="sortPatientIDDesc()">
+						Sort by Patient ID: Descending
+					</button>
 				</div>
 				<div id="view-patients"></div>
 			</div>

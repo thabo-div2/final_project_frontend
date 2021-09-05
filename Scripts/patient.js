@@ -92,6 +92,27 @@ function renderPatients(patients) {
 						</div>
 					</div>
                 </div>
+				<button onclick="addIllModal(${patient.patient_id})" class="btn">Add Illness</button>
+					<div id="add-ill-modal-${patient.patient_id}" class="add-ill-modal">
+						<div class="add-ill-bg-${patient.patient_id} add-ill-bg">
+							<span onclick="addIllModal(${patient.patient_id})" class="close">&times;</span>
+							<form id="add-ill-form-${patient.patient_id}" onsubmit="addIll(${patient.patient_id}); event.preventDefault()">
+								<div>
+									<label for="name">Name:</label>
+									<input type="text" id="name-${patient.patient_id}" placeholder="Name of Illness" required /> 
+								</div>
+								<div>
+									<label for="type">Type of Illness:</label>
+									<input type="text" id="type-${patient.patient_id}" placeholder="Type of Illness" required /> 
+								</div>
+								<div>
+									<label for="description">Description:</label>
+									<input type="text" id="description-${patient.patient_id}" placeholder="Description of Illness" required /> 
+								</div>
+								<button type="submit"> Submit Info </button>
+							</form>
+						</div>
+					</div>
             </div>
             `;
 	});
@@ -261,6 +282,38 @@ function addAppointment(patient_id) {
 		});
 }
 
+function addIllModal(patient_id) {
+	document
+		.querySelector(`#add-ill-modal-${patient_id}`)
+		.classList.toggle("active");
+}
+
+function addIll(patient_id) {
+	const i_name = document.querySelector(`#name-${patient_id}`).value;
+	const i_type = document.querySelector(`#type-${patient_id}`).value;
+	const i_desc = document.querySelector(`#description-${patient_id}`).value;
+	fetch(`https://desolate-meadow-13744.herokuapp.com/illness/${patient_id}`, {
+		method: "POST",
+		body: JSON.stringify({
+			name: i_name,
+			type: i_type,
+			description: i_desc,
+		}),
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+		},
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			if (data.status_code == 404) {
+				alert("Invalid!!! ");
+			} else {
+				window.location.reload();
+			}
+		});
+}
+
 function searchForProducts() {
 	let searchTerm = document.querySelector("#filter").value;
 	console.log(searchTerm);
@@ -271,23 +324,53 @@ function searchForProducts() {
 	renderPatients(searchedPatients);
 }
 
-function filterPatients(category) {
-	let cards = document.querySelector(".details");
-	if (category === "All") {
-		for (card of cards) {
-			card.style.display = "block";
-		}
-		return;
-	}
+function sortNameAsc() {
+	let sortedPatients = patients.sort((a, b) => {
+		if (a.first_name > b.first_name) return 1;
+		if (a.first_name < b.first_name) return -1;
+		return 0;
+	});
 
-	for (card of cards) {
-		console.log(card);
-		card.style.display = "none";
-	}
+	renderPatients(sortedPatients);
+}
 
-	let selectedCards = document.querySelectorAll(`[ = '${category}']`);
+function sortNameDesc() {
+	let sortedPatients = patients.sort((a, b) => {
+		if (a.first_name > b.first_name) return 1;
+		if (a.first_name < b.first_name) return -1;
+		return 0;
+	});
+	sortedPatients.reverse();
+	renderPatients(sortedPatients);
+}
 
-	for (card of selectedCards) {
-		card.style.display = "block";
-	}
+function sortSurnameAsc() {
+	let sortedPatients = patients.sort((a, b) => {
+		if (a.last_name > b.last_name) return 1;
+		if (a.last_name < b.last_name) return -1;
+		return 0;
+	});
+
+	renderPatients(sortedPatients);
+}
+
+function sortSurnameDesc() {
+	let sortedPatients = patients.sort((a, b) => {
+		if (a.last_name > b.last_name) return 1;
+		if (a.last_name < b.last_name) return -1;
+		return 0;
+	});
+	sortedPatients.reverse();
+	renderPatients(sortedPatients);
+}
+
+function sortPatientIDAsc() {
+	let sortedPatients = patients.sort((a, b) => a.patient_id - b.patient_id);
+	renderPatients(sortedPatients);
+}
+
+function sortPatientIDDesc() {
+	let sortedPatients = patients.sort((a, b) => a.patient_id - b.patient_id);
+	sortedPatients.reverse();
+	renderPatients(sortedPatients);
 }

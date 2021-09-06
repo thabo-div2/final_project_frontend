@@ -57,10 +57,10 @@
 	margin: 10px;
 	background-color: whitesmoke;
 	transition: 0.3s ease-in-out;
+	border-radius: 20px;
 }
 
 .register-btn:hover {
 	background-color: #83eaf1;
 	color: white;
-	border-radius: 20px;
 }

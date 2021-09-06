@@ -41,3 +41,7 @@ body {
 label {
 	display: none;
 }
+
+.navbar-button {
+	display: none;
+}

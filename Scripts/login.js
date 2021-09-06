@@ -15,12 +15,18 @@ function loginAdmin() {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data.data);
-			localStorage.setItem("user", JSON.stringify(data.data));
-			if (data.status_code == 200) {
-				window.location.href = "./patients.html";
-			} else {
-				alert("Invalid credentials!!!");
+			try {
+				console.log(data.data);
+				localStorage.setItem("user", JSON.stringify(data.data));
+				if (data.status_code == 200) {
+					window.location.href = "./patients.html";
+				} else {
+					alert("Invalid credentials!!!");
+				}
+			} catch {
+				if (data.status_code == 404) {
+					console.log(err);
+				}
 			}
 		});
 }

@@ -5,6 +5,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Records</title>
+		<!--External Scripts-->
+		<script
+			src="https://kit.fontawesome.com/9bcb9c378d.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 		<!-- External CSS -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,12 +26,14 @@
 		<!-- Navigation -->
 		<nav class="navbar">
 			<ul class="nav-links">
-				<li class="nav-link"><a href="./patients.html">See Patients</a></li>
+				<li class="nav-link"><a href="./patients.html">Show Patients</a></li>
 				<li class="nav-link">
-					<a href="./appointments.html">See Appointments</a>
+					<a href="./appointments.html">Show Appointments</a>
 				</li>
-				<li class="nav-link"><a href="#">Add a Record</a></li>
 			</ul>
+			<button class="navbar-button" onclick="toggleNavbar()">
+				<i class="fas fa-bars"></i>
+			</button>
 		</nav>
 		<!-- Displaying Records -->
 		<div id="records">

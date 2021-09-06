@@ -5,6 +5,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Patients</title>
+		<!--External Scripts-->
+		<script
+			src="https://kit.fontawesome.com/9bcb9c378d.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+		<!-- External CSS -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -20,9 +27,6 @@
 		<nav class="navbar">
 			<ul class="nav-links">
 				<li class="nav-link">
-					<a href="./admin-register.html">Admin Registration</a>
-				</li>
-				<li class="nav-link">
 					<a href="./register.html">Register Patients</a>
 				</li>
 				<li class="nav-link">
@@ -30,6 +34,9 @@
 				</li>
 				<li class="nav-link"><a href="./records.html">Show Records</a></li>
 			</ul>
+			<button class="navbar-button" onclick="toggleNavbar()">
+				<i class="fas fa-bars"></i>
+			</button>
 		</nav>
 		<!-- View Patients -->
 		<div class="patients">

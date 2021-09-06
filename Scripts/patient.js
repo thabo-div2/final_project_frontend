@@ -16,7 +16,7 @@ function renderPatients(patients) {
 	conatiner.innerHTML = "";
 	patients.forEach((patient) => {
 		conatiner.innerHTML += `
-            <div class="patient ${patient.patient_id}">
+            <div class="patient card ${patient.patient_id}">
                 <h3>${patient.first_name} ${patient.last_name}</h3>
                 <div class="details">
                     <p>Address: ${patient.address}</p>
@@ -51,10 +51,6 @@ function renderPatients(patients) {
 						<div id="show-modal-${patient.patient_id}" class="show-modal">
 							<div class="show-bg-${patient.patient_id} show-bg">
 							</div>
-						</div>
-						<button class="patients-btn" onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
-						<div id="show-illness-${patient.patient_id}" class="show-ill">
-							<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
 						</div>
 						<button class="patients-btn" onclick="addModal(${patient.patient_id})">Add Appointment</button>
 						<div id="add-appoint-${patient.patient_id}" class="add-appoint">
@@ -92,6 +88,10 @@ function renderPatients(patients) {
 								</form>
 							</div>
 						</div>
+						</div>
+						<button class="patients-btn" onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
+						<div id="show-illness-${patient.patient_id}" class="show-ill">
+							<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
 						</div>
 						<button class="patients-btn" onclick="addIllModal(${patient.patient_id})" class="btn">Add Illness</button>
 						<div id="add-ill-modal-${patient.patient_id}" class="add-ill-modal">
@@ -330,53 +330,59 @@ function searchForProducts() {
 	renderPatients(searchedPatients);
 }
 
-function sortNameAsc() {
-	let sortedPatients = patients.sort((a, b) => {
-		if (a.first_name > b.first_name) return 1;
-		if (a.first_name < b.first_name) return -1;
-		return 0;
-	});
+// Sorting the information
+function sortPatients() {
+	let sort_patients = document.querySelector("#patients-sort");
+	let sortedPatients = patients;
+	// Sorting by name ascending
+	if (sort_patients.value == "sort-name-ascending") {
+		sortedPatients = patients.sort((a, b) => {
+			if (a.first_name > b.first_name) return 1;
+			if (a.first_name < b.first_name) return -1;
+			return 0;
+		});
 
-	renderPatients(sortedPatients);
-}
+		renderPatients(sortedPatients);
+	}
+	// sorting by name descending
+	if (sort_patients.value == "sort-name-descending") {
+		sortedPatients = patients.sort((a, b) => {
+			if (a.first_name > b.first_name) return 1;
+			if (a.first_name < b.first_name) return -1;
+			return 0;
+		});
+		sortedPatients.reverse();
+		renderPatients(sortedPatients);
+	}
+	// sorting by surname ascending
+	if (sort_patients.value == "sort-surname-ascending") {
+		sortedPatients = patients.sort((a, b) => {
+			if (a.last_name > b.last_name) return 1;
+			if (a.last_name < b.last_name) return -1;
+			return 0;
+		});
 
-function sortNameDesc() {
-	let sortedPatients = patients.sort((a, b) => {
-		if (a.first_name > b.first_name) return 1;
-		if (a.first_name < b.first_name) return -1;
-		return 0;
-	});
-	sortedPatients.reverse();
-	renderPatients(sortedPatients);
-}
-
-function sortSurnameAsc() {
-	let sortedPatients = patients.sort((a, b) => {
-		if (a.last_name > b.last_name) return 1;
-		if (a.last_name < b.last_name) return -1;
-		return 0;
-	});
-
-	renderPatients(sortedPatients);
-}
-
-function sortSurnameDesc() {
-	let sortedPatients = patients.sort((a, b) => {
-		if (a.last_name > b.last_name) return 1;
-		if (a.last_name < b.last_name) return -1;
-		return 0;
-	});
-	sortedPatients.reverse();
-	renderPatients(sortedPatients);
-}
-
-function sortPatientIDAsc() {
-	let sortedPatients = patients.sort((a, b) => a.patient_id - b.patient_id);
-	renderPatients(sortedPatients);
-}
-
-function sortPatientIDDesc() {
-	let sortedPatients = patients.sort((a, b) => a.patient_id - b.patient_id);
-	sortedPatients.reverse();
-	renderPatients(sortedPatients);
+		renderPatients(sortedPatients);
+	}
+	// sorting by surname descending
+	if (sort_patients.value == "sort-surname-descending") {
+		sortedPatients = patients.sort((a, b) => {
+			if (a.last_name > b.last_name) return 1;
+			if (a.last_name < b.last_name) return -1;
+			return 0;
+		});
+		sortedPatients.reverse();
+		renderPatients(sortedPatients);
+	}
+	// sorting by patient_id ascending
+	if (sort_patients.value == "sort-patient_id-ascending") {
+		sortedPatients = patients.sort((a, b) => a.patient_id - b.patient_id);
+		renderPatients(sortedPatients);
+	}
+	// sorting by patient_id descending
+	if (sort_patients.value == "sort-patient_id-descending") {
+		sortedPatients = patients.sort((a, b) => a.patient_id - b.patient_id);
+		sortedPatients.reverse();
+		renderPatients(sortedPatients);
+	}
 }

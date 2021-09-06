@@ -58,22 +58,24 @@
 					</button>
 				</div>
 				<div class="sort-btn">
-					<button onclick="sortNameAsc()">Sort by First name: Ascending</button>
-					<button onclick="sortNameDesc()">
-						Sort by First name: Descending
-					</button>
-					<button onclick="sortSurnameAsc()">
-						Sort by Last name: Ascending
-					</button>
-					<button onclick="sortSurnameDesc()">
-						Sort by Last Name: Descending
-					</button>
-					<button onclick="sortPatientIDAsc()">
-						Sort by Patient ID: Ascending
-					</button>
-					<button onclick="sortPatientIDDesc()">
-						Sort by Patient ID: Descending
-					</button>
+					<select name="patients-sort" id="patients-sort">
+						<option value="selected" selected disabled>Sort By:</option>
+						<option value="sort-name-ascending">Sort Name: Ascending</option>
+						<option value="sort-name-descending">Sort Name: Descending</option>
+						<option value="sort-surname-ascending">
+							Sort Surname: Ascending
+						</option>
+						<option value="sort-surname-descending">
+							Sort Surname: Descending
+						</option>
+						<option value="sort-patient_id-ascending">
+							Sort Patient ID: Ascending
+						</option>
+						<option value="sort-patient_id-descending">
+							Sort Patient ID: Descending
+						</option>
+					</select>
+					<button onclick="sortPatients()">Sort</button>
 				</div>
 				<div id="view-patients"></div>
 			</div>

@@ -146,3 +146,54 @@ function searchAppointment() {
 	console.log(searchedAppointments);
 	renderAppointment(searchedAppointments);
 }
+
+function sortNameAsc() {
+	let sortedAppointment = times.sort((a, b) => {
+		if (a.first_name > b.first_name) return 1;
+		if (a.first_name < b.first_name) return -1;
+		return 0;
+	});
+
+	renderAppointment(sortedAppointment);
+}
+
+function sortNameDesc() {
+	let sortedAppointment = times.sort((a, b) => {
+		if (a.first_name > b.first_name) return 1;
+		if (a.first_name < b.first_name) return -1;
+		return 0;
+	});
+	sortedAppointment.reverse();
+	renderAppointment(sortedAppointment);
+}
+
+function sortSurnameAsc() {
+	let sortedAppointment = times.sort((a, b) => {
+		if (a.last_name > b.last_name) return 1;
+		if (a.last_name < b.last_name) return -1;
+		return 0;
+	});
+
+	renderAppointment(sortedAppointment);
+}
+
+function sortSurnameDesc() {
+	let sortedAppointment = times.sort((a, b) => {
+		if (a.last_name > b.last_name) return 1;
+		if (a.last_name < b.last_name) return -1;
+		return 0;
+	});
+	sortedAppointment.reverse();
+	renderAppointment(sortedAppointment);
+}
+
+function sortPatientIDAsc() {
+	let sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
+	renderAppointment(sortedAppointment);
+}
+
+function sortPatientIDDesc() {
+	let sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
+	sortedAppointment.reverse();
+	renderAppointment(sortedAppointment);
+}

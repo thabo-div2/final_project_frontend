@@ -21,6 +21,7 @@
 	justify-content: center;
 	background-color: whitesmoke;
 	padding: 5px;
+	margin-top: 50px;
 }
 
 .patient-heading {
@@ -51,6 +52,10 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .add-appoint {
@@ -76,6 +81,7 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	flex-direction: column;
 }
 
 /* The Close Button */
@@ -84,6 +90,9 @@
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
+	position: fixed;
+	top: 150px;
+	right: 110px;
 }
 
 .close:hover,
@@ -116,6 +125,10 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .edit-modal {
@@ -141,6 +154,10 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .show-ill {
@@ -160,18 +177,35 @@
 	display: flex;
 }
 
+/* Modal Bacground */
 .show-ill-bg {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .sort-btn {
 	display: flex;
 }
 
+.details {
+	padding: 10px;
+}
+
+.show-details {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+/* Modal */
 .add-ill-modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -189,10 +223,40 @@
 	display: flex;
 }
 
+/* Modal Background */
 .add-ill-bg {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.patients-btn-container {
+	display: grid;
+	place-items: center;
+	grid-template-columns: repeat(2, 1fr);
+	margin: 5px;
+}
+.patients-btn {
+	border: none;
+	background-color: whitesmoke;
+	transition: 0.3s ease-in-out;
+	margin: 10px;
+	padding: 5px;
+}
+
+.patients-btn:hover {
+	background-color: #83eaf1;
+	color: white;
+}
+
+.sort-btn {
+	display: grid;
+	/* place-items: center; */
+	grid-template-columns: repeat(3, 1fr);
 }

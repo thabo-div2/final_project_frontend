@@ -24,95 +24,101 @@ function renderPatients(patients) {
                     <p>Gender: ${patient.gender}</p>
                     <p>Identification Number: ${patient.id_num}</p>
                     <p>Cell Number: +27 ${patient.phone_num}</p>
-					<button onclick="deletePatient(${patient.patient_id})">Delete Patient</button>
-					<button onclick="editModal(${patient.patient_id})">Edit Patient</button>
-					<div id="edit-modal-${patient.patient_id}" class="edit-modal">
-						<div class="edit-bg">
-							<span onclick="editModal()" class="close">&times;</span>
-							<form id="edit-form-${patient.patient_id}" onsubmit="editPatients(${patient.patient_id}); event.preventDefault()">
-								<div>
-									<label for="e_email">Email</label>
-									<input type="text" id="e_email-${patient.patient_id}" name="email" placeholder="Email" required />
+					<div class="patients-btn-container">
+						<button class="patients-btn" onclick="deletePatient(${patient.patient_id})">Delete Patient</button>
+						<button class="patients-btn" onclick="editModal(${patient.patient_id})">Edit Patient</button>
+						<div id="edit-modal-${patient.patient_id}" class="edit-modal">
+							<div class="edit-bg">
+								<span onclick="editModal(${patient.patient_id})" class="close">&times;</span>
+								<form id="edit-form-${patient.patient_id}" onsubmit="editPatients(${patient.patient_id}); event.preventDefault()">
+									<div>
+										<label for="e_email">Email</label>
+										<input type="text" id="e_email-${patient.patient_id}" name="email" placeholder="Email" required />
+									</div>
+									<div>
+										<label for="e_address">Address</label>
+										<input type="text" id="e_address-${patient.patient_id}" name="address" placeholder="Address" required />
+									</div>
+									<div>
+										<label for="e_phone_num">Phone Number:</label>
+										<input type="text" id="e_phone_num-${patient.patient_id}" name="phone_num" placeholder="Phone Number" required />
+									</div>
+									<button type="submit">Edit Info</button>
+								</form>
+							</div>
+						</div>
+						<button class="patients-btn" onclick="showModal(${patient.patient_id})" class="modal-btn">Show Appointment</button>
+						<div id="show-modal-${patient.patient_id}" class="show-modal">
+							<div class="show-bg-${patient.patient_id} show-bg">
+							</div>
+						</div>
+						<button class="patients-btn" onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
+						<div id="show-illness-${patient.patient_id}" class="show-ill">
+							<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
+						</div>
+						<button class="patients-btn" onclick="addModal(${patient.patient_id})">Add Appointment</button>
+						<div id="add-appoint-${patient.patient_id}" class="add-appoint">
+							<div class="add-appoint-bg-${patient.patient_id} add-appoint-bg">
+								<span onclick="addModal(${patient.patient_id})" class="close">&times;</span>
+								<form id="add-form-${patient.patient_id}" onsubmit="addAppointment(${patient.patient_id}); event.preventDefault()">
+									<div>
+										<label for="a_first_name">First Name:</label>
+										<input type="text" id="a_first_name-${patient.patient_id}" name="first_name" placeholder="First Name" required />
+									</div>
+									<div>
+										<label for="a_last_name">Last Name:</label>
+										<input type="text" id="a_last_name-${patient.patient_id}" name="last_name" placeholder="Last Name" required />
+									</div>
+									<div>
+										<label for="a_email">Email:</label>
+										<input type="text" id="a_email-${patient.patient_id}" name="email" placeholder="Email" required />
+									</div>
+									<div>
+										<label for="a_phone_num">Phone Number:</label>
+										<input type="number" id="a_phone_num-${patient.patient_id}" name="phone_num" placeholder="Phone Number" required />
+									</div>
+									<div>
+										<label for="a_type">Type:</label>
+										<input type="text" id="a_type-${patient.patient_id}" name="type" placeholder="Type" required />
+									</div>
+									<div>
+										<label for="a_booking_date">Bookingn Date:</label>
+										<input type="date" id="a_booking_date-${patient.patient_id}" name="booking_date" placeholder="Booking Date" required />
+									</div>
+									<div>
+										<label for="a_start_date">Start Date:</label>
+										<input type="date" id="a_start_date-${patient.patient_id} name="start_date" placeholder="Start Date" required />
+									<button type="submit">Add Appointment</button>
+								</form>
+							</div>
+						</div>
+						</div>
+						<button class="patients-btn" onclick="addIllModal(${patient.patient_id})" class="btn">Add Illness</button>
+						<div id="add-ill-modal-${patient.patient_id}" class="add-ill-modal">
+							<div class="add-ill-bg-${patient.patient_id} add-ill-bg">
+								<span onclick="addIllModal(${patient.patient_id})" class="close">&times;</span>
+								<div class="add-ill-heading">
+									<h2>Add Illness</h2>
 								</div>
-								<div>
-									<label for="e_address">Address</label>
-									<input type="text" id="e_address-${patient.patient_id}" name="address" placeholder="Address" required />
-								</div>
-								<div>
-									<label for="e_phone_num">Phone Number:</label>
-									<input type="text" id="e_phone_num-${patient.patient_id}" name="phone_num" placeholder="Phone Number" required />
-								</div>
-								<button type="submit">Edit Info</button>
-							</form>
+								<form id="add-ill-form-${patient.patient_id}" onsubmit="addIll(${patient.patient_id}); event.preventDefault()">
+									<div>
+										<label for="name">Name:</label>
+										<input type="text" id="name-${patient.patient_id}" placeholder="Name of Illness" required /> 
+									</div>
+									<div>
+										<label for="type">Type of Illness:</label>
+										<input type="text" id="type-${patient.patient_id}" placeholder="Type of Illness" required /> 
+									</div>
+									<div>
+										<label for="description">Description:</label>
+										<input type="text" id="description-${patient.patient_id}" placeholder="Description of Illness" required /> 
+									</div>
+									<button type="submit"> Submit Info </button>
+								</form>
+							</div>
 						</div>
 					</div>
-                    <button onclick="showModal(${patient.patient_id})" class="modal-btn">Show Appointment</button>
-					<div id="show-modal-${patient.patient_id}" class="show-modal">
-						<div class="show-bg-${patient.patient_id} show-bg">
-						</div>
-					</div>
-					<button onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
-					<div id="show-illness-${patient.patient_id}" class="show-ill">
-						<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
-					</div>
-					<button onclick="addModal(${patient.patient_id})">Add Appointment</button>
-					<div id="add-appoint-${patient.patient_id}" class="add-appoint">
-						<div class="add-appoint-bg-${patient.patient_id} add-appoint-bg">
-							<span onclick="addModal(${patient.patient_id})" class="close">&times;</span>
-							<form id="add-form-${patient.patient_id}" onsubmit="addAppointment(${patient.patient_id}); event.preventDefault()">
-								<div>
-									<label for="a_first_name">First Name:</label>
-									<input type="text" id="a_first_name-${patient.patient_id}" name="first_name" placeholder="First Name" required />
-								</div>
-								<div>
-									<label for="a_last_name">Last Name:</label>
-									<input type="text" id="a_last_name-${patient.patient_id}" name="last_name" placeholder="Last Name" required />
-								</div>
-								<div>
-									<label for="a_email">Email:</label>
-									<input type="text" id="a_email-${patient.patient_id}" name="email" placeholder="Email" required />
-								</div>
-								<div>
-									<label for="a_phone_num">Phone Number:</label>
-									<input type="number" id="a_phone_num-${patient.patient_id}" name="phone_num" placeholder="Phone Number" required />
-								</div>
-								<div>
-									<label for="a_type">Type:</label>
-									<input type="text" id="a_type-${patient.patient_id}" name="type" placeholder="Type" required />
-								</div>
-								<div>
-									<label for="a_booking_date">Bookingn Date:</label>
-									<input type="date" id="a_booking_date-${patient.patient_id}" name="booking_date" placeholder="Booking Date" required />
-								</div>
-								<div>
-									<label for="a_start_date">Start Date:</label>
-									<input type="date" id="a_start_date-${patient.patient_id} name="start_date" placeholder="Start Date" required />
-								<button type="submit">Add Appointment</button>
-							</form>
-						</div>
-					</div>
-                </div>
-				<button onclick="addIllModal(${patient.patient_id})" class="btn">Add Illness</button>
-					<div id="add-ill-modal-${patient.patient_id}" class="add-ill-modal">
-						<div class="add-ill-bg-${patient.patient_id} add-ill-bg">
-							<span onclick="addIllModal(${patient.patient_id})" class="close">&times;</span>
-							<form id="add-ill-form-${patient.patient_id}" onsubmit="addIll(${patient.patient_id}); event.preventDefault()">
-								<div>
-									<label for="name">Name:</label>
-									<input type="text" id="name-${patient.patient_id}" placeholder="Name of Illness" required /> 
-								</div>
-								<div>
-									<label for="type">Type of Illness:</label>
-									<input type="text" id="type-${patient.patient_id}" placeholder="Type of Illness" required /> 
-								</div>
-								<div>
-									<label for="description">Description:</label>
-									<input type="text" id="description-${patient.patient_id}" placeholder="Description of Illness" required /> 
-								</div>
-								<button type="submit"> Submit Info </button>
-							</form>
-						</div>
-					</div>
+				</div>
             </div>
             `;
 	});

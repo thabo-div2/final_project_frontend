@@ -1,0 +1,42 @@
+@media screen and (max-width: 800px) {
+	body {
+		overflow-x: hidden;
+	}
+	/*Nav*/
+	.nav-links {
+		display: flex;
+		list-style-type: none;
+		flex-direction: column;
+		background: #fefefe;
+		position: fixed;
+		top: -200%;
+		width: 100vw;
+		height: 100vh;
+		justify-content: center;
+		align-items: center;
+		text-transform: uppercase;
+		gap: 20px;
+		transition: all 0.3s linear;
+		width: 100vw;
+	}
+	.navbar-button {
+		position: fixed;
+		display: flex;
+		top: 0;
+		right: 25px;
+		z-index: 100;
+		font-size: 30px;
+		background: transparent;
+		border: none;
+		outline: none;
+		padding: 20px;
+	}
+
+	.nav-button i {
+		color: #fff;
+	}
+	.nav-links.active {
+		top: 0px;
+		right: 0px;
+	}
+}

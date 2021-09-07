@@ -30,7 +30,10 @@ function renderPatients(patients) {
 						<div id="edit-modal-${patient.patient_id}" class="edit-modal">
 							<div class="edit-bg">
 								<span onclick="editModal(${patient.patient_id})" class="close">&times;</span>
-								<form id="edit-form-${patient.patient_id}" onsubmit="editPatients(${patient.patient_id}); event.preventDefault()">
+								<div class="edit-heading">
+									<h2>Edit Patient Info</h2>
+								</div>
+								<form id="edit-form-${patient.patient_id} edit-form" onsubmit="editPatients(${patient.patient_id}); event.preventDefault()">
 									<div>
 										<label for="e_email">Email</label>
 										<input type="text" id="e_email-${patient.patient_id}" name="email" placeholder="Email" required />

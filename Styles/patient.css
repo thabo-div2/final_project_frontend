@@ -35,7 +35,8 @@
 }
 
 .card:hover {
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	box-shadow: 0 14px 28px rgba(131, 234, 241, 0.25),
+		0 10px 10px rgba(131, 234, 241, 0.22);
 }
 
 .patient-container {
@@ -107,11 +108,14 @@
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
 	flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* The Close Button */
 .close {
-	color: #aaa;
+	color: #83eaf1;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
@@ -280,4 +284,46 @@
 .patients-btn:hover {
 	background-color: #83eaf1;
 	color: white;
+}
+
+#filter {
+	border: none;
+	padding: 5px;
+	margin: 5px;
+	border-bottom: 1px solid #83eaf1;
+}
+
+#patients-sort {
+	border: none;
+	padding: 5px;
+	margin: 5px;
+	border-bottom: 1px solid #83eaf1;
+}
+
+.sorted-btn {
+	border: none;
+	background-color: #83eaf1;
+	color: #fff;
+	padding: 5px;
+	margin: 5px;
+	transition: 0.3s ease-in-out;
+}
+
+.sorted-btn:hover {
+	background-color: #fff;
+	color: black;
+}
+
+.filter-btn {
+	border: none;
+	background-color: #83eaf1;
+	color: #fff;
+	padding: 5px;
+	margin: 5px;
+	transition: 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+	background-color: #fff;
+	color: black;
 }

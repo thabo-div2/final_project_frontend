@@ -126,6 +126,26 @@
 
 .record-btn button {
 	border-radius: 30px;
-	border: 1px solid;
+	border: none;
 	padding: 3px;
+	transition: 0.3s ease-in-out;
+}
+
+.record-btn button:hover {
+	background-color: #83eaf1;
+	color: #fff;
+}
+
+.records-btn {
+	border: none;
+	background-color: #83eaf1;
+	color: #fff;
+	padding: 5px;
+	margin: 5px;
+	transition: 0.3s ease-in-out;
+}
+
+.records-btn:hover {
+	background-color: #fff;
+	color: black;
 }

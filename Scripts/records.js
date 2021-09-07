@@ -60,6 +60,9 @@ function deleteRecord(patient_id) {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			if (data.status_code == 200) {
+				window.location.reload();
+			}
 		});
 }
 

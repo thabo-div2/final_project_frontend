@@ -47,14 +47,18 @@
 					<button onclick="searchIllness()">Search</button>
 				</div>
 				<div class="sort-btn">
-					<button onclick="sortNameAsc()">Sort by Name: Ascending</button>
-					<button onclick="sortNameDesc()">Sort by Name: Descending</button>
-					<button onclick="sortPatientIDAsc()">
-						Sort by Patient ID: Ascending
-					</button>
-					<button onclick="sortPatientIDDesc()">
-						Sort by Patient ID: Descending
-					</button>
+					<select id="sort-records">
+						<option value="select-sort" disabled selected>Sort Records:</option>
+						<option value="sort-records-name-asc">Name: Ascending</option>
+						<option value="sort-records-name-desc">Name: Descending</option>
+						<option value="sort-records-patient_id-asc">
+							Patient_ID: Ascending
+						</option>
+						<option value="sort-records-patient_id-desc">
+							Patient_ID: Descending
+						</option>
+					</select>
+					<button onclick="sortRecords()">Sort</button>
 				</div>
 				<div class="records-container"></div>
 			</div>

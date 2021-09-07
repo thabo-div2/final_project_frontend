@@ -147,53 +147,58 @@ function searchAppointment() {
 	renderAppointment(searchedAppointments);
 }
 
-function sortNameAsc() {
-	let sortedAppointment = times.sort((a, b) => {
-		if (a.first_name > b.first_name) return 1;
-		if (a.first_name < b.first_name) return -1;
-		return 0;
-	});
+function sortAppointments() {
+	let sort_appointments = document.querySelector("#sort-appointments");
+	console.log(sort_appointments.value);
+	let sortedAppointment = times;
+	if (sort_appointments.value == "sort-appointments-name-ascending") {
+		sortedAppointment = times.sort((a, b) => {
+			if (a.first_name > b.first_name) return 1;
+			if (a.first_name < b.first_name) return -1;
+			return 0;
+		});
 
-	renderAppointment(sortedAppointment);
-}
+		renderAppointment(sortedAppointment);
+	}
 
-function sortNameDesc() {
-	let sortedAppointment = times.sort((a, b) => {
-		if (a.first_name > b.first_name) return 1;
-		if (a.first_name < b.first_name) return -1;
-		return 0;
-	});
-	sortedAppointment.reverse();
-	renderAppointment(sortedAppointment);
-}
+	if (sort_appointments.value == "sort-appointments-name-descending") {
+		sortedAppointment = times.sort((a, b) => {
+			if (a.first_name > b.first_name) return 1;
+			if (a.first_name < b.first_name) return -1;
+			return 0;
+		});
+		sortedAppointment.reverse();
+		renderAppointment(sortedAppointment);
+	}
 
-function sortSurnameAsc() {
-	let sortedAppointment = times.sort((a, b) => {
-		if (a.last_name > b.last_name) return 1;
-		if (a.last_name < b.last_name) return -1;
-		return 0;
-	});
+	if (sort_appointments.value == "sort-appointments-surname-ascending") {
+		sortedAppointment = times.sort((a, b) => {
+			if (a.last_name > b.last_name) return 1;
+			if (a.last_name < b.last_name) return -1;
+			return 0;
+		});
 
-	renderAppointment(sortedAppointment);
-}
+		renderAppointment(sortedAppointment);
+	}
 
-function sortSurnameDesc() {
-	let sortedAppointment = times.sort((a, b) => {
-		if (a.last_name > b.last_name) return 1;
-		if (a.last_name < b.last_name) return -1;
-		return 0;
-	});
-	sortedAppointment.reverse();
-	renderAppointment(sortedAppointment);
-}
+	if (sort_appointments.value == "sort-appointments-surname-descending") {
+		sortedAppointment = times.sort((a, b) => {
+			if (a.last_name > b.last_name) return 1;
+			if (a.last_name < b.last_name) return -1;
+			return 0;
+		});
+		sortedAppointment.reverse();
+		renderAppointment(sortedAppointment);
+	}
 
-function sortPatientIDAsc() {
-	let sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
-	renderAppointment(sortedAppointment);
-}
+	if (sort_appointments.value == "sort-appointments-patient_id-ascending") {
+		sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
+		renderAppointment(sortedAppointment);
+	}
 
-function sortPatientIDDesc() {
-	let sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
-	sortedAppointment.reverse();
-	renderAppointment(sortedAppointment);
+	if (sort_appointments.value == "sort-appointments-patient_id-descending") {
+		sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
+		sortedAppointment.reverse();
+		renderAppointment(sortedAppointment);
+	}
 }

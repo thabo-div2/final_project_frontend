@@ -175,3 +175,42 @@ function sortPatientIDDesc() {
 	sortedIllness.reverse();
 	renderRecords(sortedIllness);
 }
+
+function sortRecords() {
+	let sort_records = document.querySelector("#sort-records");
+	let sortRecords = records;
+	if (sort_records.value == "sort-records-name-asc") {
+		sortRecords = records.sort((a, b) => {
+			a.name.toLowerCase();
+			b.name.toLowerCase();
+			if (a.name > b.name) return 1;
+			if (a.name < b.name) return -1;
+			return 0;
+		});
+
+		renderRecords(sortRecords);
+	}
+
+	if (sort_records.value == "sort-records-name-desc") {
+		sortRecords = records.sort((a, b) => {
+			a.name.toLowerCase();
+			b.name.toLowerCase();
+			if (a.name > b.name) return 1;
+			if (a.name < b.name) return -1;
+			return 0;
+		});
+		sortRecords.reverse();
+		renderRecords(sortRecords);
+	}
+
+	if (sort_records.value == "sort-records-patient_id-asc") {
+		sortRecords = records.sort((a, b) => a.patient_id - b.patient_id);
+		renderRecords(sortRecords);
+	}
+
+	if (sort_records.value == "sort-records-patient_id-desc") {
+		sortRecords = records.sort((a, b) => a.patient_id - b.patient_id);
+		sortRecords.reverse();
+		renderRecords(sortRecords);
+	}
+}

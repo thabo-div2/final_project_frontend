@@ -110,3 +110,17 @@
 .appointment:hover {
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
+.appoint-btn {
+	border: none;
+	background-color: #83eaf1;
+	color: #fff;
+	padding: 7px;
+	margin: 5px;
+	transition: 0.3s ease-in-out;
+}
+
+.appoint-btn:hover {
+	background-color: #fff;
+	color: black;
+}

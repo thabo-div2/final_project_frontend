@@ -41,7 +41,9 @@
 				</div>
 				<div class="filter-container">
 					<input type="text" id="filter" placeholder="Search..." required />
-					<button onclick="searchAppointment()">Search</button>
+					<button class="appoint-btn" onclick="searchAppointment()">
+						Search
+					</button>
 				</div>
 				<div class="sort-btn">
 					<select id="sort-appointments">
@@ -67,7 +69,7 @@
 							Patient_ID: Descending
 						</option>
 					</select>
-					<button onclick="sortAppointments()">Sort</button>
+					<button class="appoint-btn" onclick="sortAppointments()">Sort</button>
 				</div>
 				<!-- Viewing the appointments -->
 				<div id="timetable"></div>

@@ -29,7 +29,10 @@ function renderAppointment(times) {
 						<div id="edit-appoint-${time.patient_id}" class="edit-appoint">
 							<div class="edit-bg-${time.patient_id} edit-bg">
 								<span onclick="editModal(${time.patient_id})" class="close">&times;</span>
-								<form id="appoint-form-${time.patient_id}" onsubmit="editAppointment(${time.patient_id}); event.preventDefault()">
+								<div class="edit-heading">
+									<h2>Edit Appointments</h2>
+								</div>
+								<form id="appoint-form-${time.patient_id} appoint-form" onsubmit="editAppointment(${time.patient_id}); event.preventDefault()">
 									<div>
 										<label for="email">Email:</label>
 										<input type="text" id="email-${time.patient_id}" name="email" placeholder="Email" required /> 

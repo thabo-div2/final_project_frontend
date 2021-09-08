@@ -12,7 +12,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: whitesmoke;
+	background-color: white;
 }
 
 #timetable {
@@ -75,14 +75,29 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.edit-bg input {
+	border: none;
+	border-bottom: 1px solid #83eaf1;
+	margin: 10px;
+	padding: 5px;
 }
 
 /* The Close Button */
 .close {
-	color: #aaa;
+	color: #83eaf1;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
+	position: fixed;
+	top: 230px;
+	right: 200px;
 }
 
 .close:hover,
@@ -104,11 +119,12 @@
 	width: 300px;
 	padding: 10px;
 	height: 400px;
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	transition: all 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .appointment:hover {
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	box-shadow: 0 14px 28px rgba(131, 234, 241, 0.25),
+		0 10px 10px rgba(131, 234, 241, 0.22);
 }
 
 .appoint-btn {
@@ -123,4 +139,40 @@
 .appoint-btn:hover {
 	background-color: #fff;
 	color: black;
+}
+
+#sort-appointments {
+	border: none;
+	padding: 5px;
+	margin: 10px;
+	border-bottom: #83eaf1 1px solid;
+}
+
+#filter {
+	border: none;
+	padding: 5px;
+	margin: 10px;
+	border-bottom: #83eaf1 1px solid;
+}
+
+.time-btn {
+	display: flex;
+}
+
+.time-btn button {
+	border: none;
+	background-color: whitesmoke;
+	transition: 0.3s ease-in-out;
+	margin: 10px;
+	padding: 5px;
+	height: 40px;
+	display: flex;
+	width: 100px;
+	justify-content: center;
+	align-items: center;
+}
+
+.time-btn button:hover {
+	background-color: #83eaf1;
+	color: white;
 }

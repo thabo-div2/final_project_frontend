@@ -46,7 +46,7 @@ function renderPatients(patients) {
 										<label for="e_phone_num">Phone Number:</label>
 										<input type="text" id="e_phone_num-${patient.patient_id}" name="phone_num" placeholder="Phone Number" required />
 									</div>
-									<button type="submit">Edit Info</button>
+									<button class="patients-btn" type="submit">Edit Info</button>
 								</form>
 							</div>
 						</div>
@@ -87,7 +87,7 @@ function renderPatients(patients) {
 									<div>
 										<label for="a_start_date">Start Date:</label>
 										<input type="date" id="a_start_date-${patient.patient_id} name="start_date" placeholder="Start Date" required />
-									<button type="submit">Add Appointment</button>
+									<button class="patients-btn" type="submit">Add Appointment</button>
 								</form>
 							</div>
 						</div>
@@ -116,7 +116,7 @@ function renderPatients(patients) {
 										<label for="description">Description:</label>
 										<input type="text" id="description-${patient.patient_id}" placeholder="Description of Illness" required /> 
 									</div>
-									<button type="submit"> Submit Info </button>
+									<button class="patients-btn" type="submit"> Submit Info </button>
 								</form>
 							</div>
 						</div>

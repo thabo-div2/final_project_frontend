@@ -24,6 +24,9 @@ function renderRecords(records) {
 					<div id="edit-modal-${record.patient_id}" class="edit-modal">
 						<div class="edit-bg-${record.patient_id} edit-bg">
 							<span onclick="editModal(${record.patient_id})" class="close">&times</span>
+							<div class="edit-heading">
+									<h2>Edit Record</h2>
+								</div>
 							<div class="edit-form-fix">
 								<form onsubmit="editIllness(${record.patient_id}); event.preventDefault()" id="edit-form-${record.patient_id}">
 								<div>
@@ -142,41 +145,6 @@ function searchIllness() {
 	);
 	console.log(searchedRecords);
 	renderRecords(searchedRecords);
-}
-
-function sortNameAsc() {
-	let sortedIllness = records.sort((a, b) => {
-		a.name.toLowerCase();
-		b.name.toLowerCase();
-		if (a.name > b.name) return 1;
-		if (a.name < b.name) return -1;
-		return 0;
-	});
-
-	renderRecords(sortedIllness);
-}
-
-function sortNameDesc() {
-	let sortedIllness = records.sort((a, b) => {
-		a.name.toLowerCase();
-		b.name.toLowerCase();
-		if (a.name > b.name) return 1;
-		if (a.name < b.name) return -1;
-		return 0;
-	});
-	sortedIllness.reverse();
-	renderRecords(sortedIllness);
-}
-
-function sortPatientIDAsc() {
-	let sortedIllness = records.sort((a, b) => a.patient_id - b.patient_id);
-	renderRecords(sortedIllness);
-}
-
-function sortPatientIDDesc() {
-	let sortedIllness = records.sort((a, b) => a.patient_id - b.patient_id);
-	sortedIllness.reverse();
-	renderRecords(sortedIllness);
 }
 
 function sortRecords() {

@@ -9,18 +9,21 @@ function registerPatient() {
 	const gender = document.querySelector("#gender").value;
 	const phone_num = document.querySelector("#phone_num").value;
 	const id_num = document.querySelector("#id_num").value;
+
+	const newPatient = {
+		first_name: document.querySelector("#first_name").value,
+		last_name: document.querySelector("#last_name").value,
+		address: document.querySelector("#address").value,
+		email: document.querySelector("#email").value,
+		birth_date: document.querySelector("#birth_date").value,
+		gender: document.querySelector("#gender").value,
+		phone_num: document.querySelector("#phone_num").value,
+		id_num: document.querySelector("#id_num").value,
+	};
+	console.log(newPatient);
 	fetch(baseURL, {
 		method: "POST",
-		body: JSON.stringify({
-			first_name: fname,
-			last_name: lname,
-			address: address,
-			email: email,
-			birth_date: birth_date,
-			gender: gender,
-			phone_num: phone_num,
-			id_num: id_num,
-		}),
+		body: JSON.stringify(newPatient),
 		headers: {
 			"Content-type": "application/json",
 		},
@@ -29,5 +32,8 @@ function registerPatient() {
 		.then((data) => {
 			console.log(data);
 			localStorage.setItem("patients", JSON.stringify(data));
+			if (data.status_code == 201) {
+				window.location.href = "/patients.html";
+			}
 		});
 }

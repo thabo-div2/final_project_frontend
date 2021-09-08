@@ -31,7 +31,7 @@
 	width: 300px;
 	padding: 10px;
 	height: 400px;
-	transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	transition: all 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .card:hover {
@@ -44,7 +44,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: whitesmoke;
+	background-color: #fff;
 	padding: 5px;
 	margin-top: 50px;
 }
@@ -107,10 +107,18 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	height: 80%;
 	flex-direction: column;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.add-appoint-bg input {
+	border: none;
+	border-bottom: 1px solid #83eaf1;
+	padding: 5px;
+	margin: 10px;
 }
 
 /* The Close Button */
@@ -120,8 +128,8 @@
 	font-size: 28px;
 	font-weight: bold;
 	position: fixed;
-	top: 150px;
-	right: 110px;
+	top: 230px;
+	right: 200px;
 }
 
 .close:hover,
@@ -188,6 +196,12 @@
 	align-items: center;
 	flex-direction: column;
 }
+.edit-bg input {
+	border: none;
+	border-bottom: 1px solid #83eaf1;
+	padding: 5px;
+	margin: 10px;
+}
 
 .show-ill {
 	display: none; /* Hidden by default */
@@ -217,6 +231,11 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+}
+
+.show-ill-bg input {
+	border: none;
+	border-bottom: 1px solid #83eaf1;
 }
 
 .sort-btn {
@@ -261,10 +280,18 @@
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
+	height: 80%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+}
+
+.add-ill-bg input {
+	border: none;
+	border-bottom: 1px solid #83eaf1;
+	padding: 5px;
+	margin: 10px;
 }
 
 .patients-btn-container {
@@ -279,6 +306,11 @@
 	transition: 0.3s ease-in-out;
 	margin: 10px;
 	padding: 5px;
+	height: 40px;
+	display: flex;
+	width: 100px;
+	justify-content: center;
+	align-items: center;
 }
 
 .patients-btn:hover {

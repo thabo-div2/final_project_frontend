@@ -248,13 +248,6 @@
 	padding: 10px;
 }
 
-.show-details {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-}
-
 /* Modal */
 .add-ill-modal {
 	display: none; /* Hidden by default */

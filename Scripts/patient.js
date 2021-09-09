@@ -59,6 +59,9 @@ function renderPatients(patients) {
 						<div id="add-appoint-${patient.patient_id}" class="add-appoint">
 							<div class="add-appoint-bg-${patient.patient_id} add-appoint-bg">
 								<span onclick="addModal(${patient.patient_id})" class="close">&times;</span>
+								<div class="add-appoint-heading">
+									<h2>Add Appointment</h2>
+								</div>
 								<form id="add-form-${patient.patient_id}" onsubmit="addAppointment(${patient.patient_id}); event.preventDefault()">
 									<div>
 										<label for="a_first_name">First Name:</label>

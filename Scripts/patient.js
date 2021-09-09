@@ -87,9 +87,6 @@ function renderPatients(patients) {
 										<label for="a_booking_date">Bookingn Date:</label>
 										<input type="date" id="a_booking_date-${patient.patient_id}" name="booking_date" placeholder="Booking Date" required />
 									</div>
-									<div>
-										<label for="a_start_date">Start Date:</label>
-										<input type="date" id="a_start_date-${patient.patient_id} name="start_date" placeholder="Start Date" required />
 									<button class="patients-btn" type="submit">Add Appointment</button>
 								</form>
 							</div>
@@ -269,7 +266,6 @@ function addAppointment(patient_id) {
 	const booking_date = document.querySelector(
 		`#a_booking_date-${patient_id}`,
 	).value;
-	consstart_date = document.querySelector(`#a_start_date-${patient_id}`).value;
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/appointment/${patient_id}`,
 		{

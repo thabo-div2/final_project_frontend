@@ -1,19 +1,28 @@
 const baseURL = "https://desolate-meadow-13744.herokuapp.com/view-patient/";
-
+// Using this to store my patients
 let patients = [];
 
+// fetching my data from my api
 fetch(baseURL)
 	.then((res) => res.json())
 	.then((data) => {
+		// seeing if the data was fetched
 		console.log(data);
+		// Storing my information in the empty array
 		patients = data.data;
+		// storing information in local storage to be used later
 		localStorage.setItem("patients", patients);
+		// passing this into my function so it can be displayed
 		renderPatients(patients);
 	});
 
+// Displaying all my patients
 function renderPatients(patients) {
+	// initialising this variable for DOM manipulation
 	let conatiner = document.querySelector("#view-patients");
+	// emptying the container before i set any data into it
 	conatiner.innerHTML = "";
+	// this will display all the info in the api
 	patients.forEach((patient) => {
 		conatiner.innerHTML += `
             <div class="patient card ${patient.patient_id}">
@@ -91,43 +100,44 @@ function renderPatients(patients) {
 								</form>
 							</div>
 						</div>
-						</div>
-						<button class="patients-btn" onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
-						<div id="show-illness-${patient.patient_id}" class="show-ill">
-							<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
-						</div>
-						<button class="patients-btn" onclick="addIllModal(${patient.patient_id})" class="btn">Add Illness</button>
-						<div id="add-ill-modal-${patient.patient_id}" class="add-ill-modal">
-							<div class="add-ill-bg-${patient.patient_id} add-ill-bg">
-								<span onclick="addIllModal(${patient.patient_id})" class="close">&times;</span>
-								<div class="add-ill-heading">
-									<h2>Add Illness</h2>
+							<button class="patients-btn" onclick="illModal(${patient.patient_id})" class="ill-btn">Show Illness</button>
+							<div id="show-illness-${patient.patient_id}" class="show-ill">
+								<div class="show-ill-bg-${patient.patient_id} show-ill-bg"></div>
+							</div>
+							<button class="patients-btn" onclick="addIllModal(${patient.patient_id})" class="btn">Add Illness</button>
+							<div id="add-ill-modal-${patient.patient_id}" class="add-ill-modal">
+								<div class="add-ill-bg-${patient.patient_id} add-ill-bg">
+									<span onclick="addIllModal(${patient.patient_id})" class="close">&times;</span>
+									<div class="add-ill-heading">
+										<h2>Add Illness</h2>
+									</div>
+									<form id="add-ill-form-${patient.patient_id}" onsubmit="addIll(${patient.patient_id}); event.preventDefault()">
+										<div>
+											<label for="name">Name:</label>
+											<input type="text" id="name-${patient.patient_id}" placeholder="Name of Illness" required /> 
+										</div>
+										<div>
+											<label for="type">Type of Illness:</label>
+											<input type="text" id="type-${patient.patient_id}" placeholder="Type of Illness" required /> 
+										</div>
+										<div>
+											<label for="description">Description:</label>
+											<input type="text" id="description-${patient.patient_id}" placeholder="Description of Illness" required /> 
+										</div>
+										<button class="patients-btn" type="submit"> Submit Info </button>
+									</form>
 								</div>
-								<form id="add-ill-form-${patient.patient_id}" onsubmit="addIll(${patient.patient_id}); event.preventDefault()">
-									<div>
-										<label for="name">Name:</label>
-										<input type="text" id="name-${patient.patient_id}" placeholder="Name of Illness" required /> 
-									</div>
-									<div>
-										<label for="type">Type of Illness:</label>
-										<input type="text" id="type-${patient.patient_id}" placeholder="Type of Illness" required /> 
-									</div>
-									<div>
-										<label for="description">Description:</label>
-										<input type="text" id="description-${patient.patient_id}" placeholder="Description of Illness" required /> 
-									</div>
-									<button class="patients-btn" type="submit"> Submit Info </button>
-								</form>
 							</div>
 						</div>
-					</div>
 				</div>
             </div>
             `;
 	});
 }
 
+// function to delete a patient with a parameter
 function deletePatient(patient_id) {
+	// fetching my delete route
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/delete-patient/${patient_id}`,
 		{
@@ -136,28 +146,40 @@ function deletePatient(patient_id) {
 	)
 		.then((res) => res.json())
 		.then((data) => {
+			// to see if the delete method worked
 			console.log(data);
+			if (data.status_code == 200) {
+				// reloading the page to display the changes
+				window.location.reload();
+			}
 		});
 }
 
+// setting up a modal to display a patients appointment details
 function showModal(patient_id) {
 	document
 		.querySelector(`#show-modal-${patient_id}`)
 		.classList.toggle("active");
+	// displaying the information in a function that i made
 	showAppointment(patient_id);
 }
 
+// a function to display an individual patients appointment
 function showAppointment(patient_id) {
+	//  intialising an individual patients modal background
 	const container = document.querySelector(`.show-bg-${patient_id}`);
+	// fetching an individuals appointment schedule
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/view-appointment/${patient_id}`,
 	)
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			// storing the information in a variable
 			let times = data.data;
 			container.innerHTML = "";
 			console.log(times);
+			// this will be displayed if a patient doesn't have an appointment
 			if (times === null) {
 				container.innerHTML += `
 				<h1> Appointment has not been made yet</h1> 
@@ -168,6 +190,7 @@ function showAppointment(patient_id) {
 					window.location.reload();
 				}
 			} else {
+				// this will display the patients appointment in the modal
 				container.innerHTML += `
 				<span onclick="showModal(${times.patient_id})" class="close">&times;</span>
 				<div class="show-details">
@@ -181,25 +204,32 @@ function showAppointment(patient_id) {
 		});
 }
 
+// setting up my modal to edit patients information
 function editModal(patient_id) {
+	// this takes the patients id and locates there individual div to open their own modal
 	document
 		.querySelector(`#edit-modal-${patient_id}`)
 		.classList.toggle("active");
 }
 
+// a function to update an individual patients details
 function editPatients(patient_id) {
+	// intialising individual constant variables that will passed into the fetch call
 	const email = document.querySelector(`#e_email-${patient_id}`).value;
 	const address = document.querySelector(`#e_address-${patient_id}`).value;
 	const phone_num = document.querySelector(`#e_phone_num-${patient_id}`).value;
+	// using put method in this fetch call to update or change details of the patients
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/edit-patient/${patient_id}`,
 		{
 			method: "PUT",
+			// stringify the details declared earlier to pass into the api's database
 			body: JSON.stringify({
 				email: email,
 				address: address,
 				phone_num: phone_num,
 			}),
+			// this header is declaring the content-type of the data passing through
 			headers: {
 				"Content-type": "application/json; charset=UTF-8",
 			},
@@ -208,12 +238,16 @@ function editPatients(patient_id) {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			//  this will reload the page once the data has been successfully updated
 			if (data.status_code == 200) {
 				window.location.reload();
+			} else {
+				alert("Error!!! Invalid credentials");
 			}
 		});
 }
 
+// setting up a modal for an individual patient to display the current disease they have
 function illModal(patient_id) {
 	document
 		.querySelector(`#show-illness-${patient_id}`)
@@ -322,9 +356,12 @@ function addIll(patient_id) {
 		});
 }
 
-function searchForProducts() {
+// searching for a patient
+function searchForPatients() {
 	let searchTerm = document.querySelector("#filter").value;
+	// to see if the data is being passed through
 	console.log(searchTerm);
+	// filtering through the information
 	let searchedPatients = patients.filter((patient) =>
 		patient.first_name.toLowerCase().includes(searchTerm.toLowerCase()),
 	);

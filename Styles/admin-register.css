@@ -15,7 +15,7 @@
 }
 
 .admin-fix {
-	background-color: whitesmoke;
+	background-color: #fff;
 	border-radius: 20px;
 	display: flex;
 	justify-content: center;
@@ -39,15 +39,18 @@
 	border: none;
 	padding: 10px;
 	margin: 10px;
+	border-bottom: 1px solid #83eaf1;
 }
 
 .admin-btn {
 	width: 100%;
-	border: none;
-	background-color: whitesmoke;
+	border: 2px solid #83eaf1;
+	background-color: #fff;
 	transition: 0.3s ease-in-out;
 	margin: 10px;
 	padding: 10px;
+	border-radius: 20px;
+	color: #83eaf1;
 }
 
 .admin-btn:hover {

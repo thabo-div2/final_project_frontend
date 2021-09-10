@@ -82,6 +82,7 @@ function editModal(patient_id) {
 		.classList.toggle("active");
 }
 
+// function to edit appointment
 function editAppointment(patient_id) {
 	const email = document.querySelector(`#email-${patient_id}`).value;
 	const phone_num = document.querySelector(`#phone_num-${patient_id}`).value;

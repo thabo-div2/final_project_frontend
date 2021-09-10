@@ -1,3 +1,4 @@
+/* Styling the form page */
 .form-container {
 	display: flex;
 	justify-content: center;
@@ -5,7 +6,7 @@
 	width: 100vw;
 	min-height: 100vh;
 }
-
+/* Styling the form background */
 .fix-form {
 	display: flex;
 	justify-content: center;
@@ -16,7 +17,7 @@
 	padding: 15px;
 	margin-top: 50px;
 }
-
+/* Styling the header */
 .register-heading {
 	display: flex;
 	justify-content: center;
@@ -24,7 +25,7 @@
 	padding: 15px;
 	margin: 10px;
 }
-
+/* Styling the form  tag */
 #form {
 	width: 100%;
 	display: flex;
@@ -35,7 +36,7 @@
 	padding: 10px;
 	margin: 10px;
 }
-
+/* Styling the input tag */
 #form input {
 	border: none;
 	padding: 10px;
@@ -43,7 +44,7 @@
 	width: 100%;
 	border-bottom: #83eaf1 1px solid;
 }
-
+/* Styling Select tag */
 #form select {
 	border: none;
 	padding: 10px;
@@ -51,7 +52,7 @@
 	width: 100%;
 	border-bottom: #83eaf1 1px solid;
 }
-
+/* Styling Buttons */
 .register-btn {
 	width: 77%;
 	border: 2px solid #83eaf1;
@@ -61,7 +62,7 @@
 	transition: 0.3s ease-in-out;
 	border-radius: 20px;
 }
-
+/* Adding hover effect to the buttons */
 .register-btn:hover {
 	background-color: #83eaf1;
 	color: white;

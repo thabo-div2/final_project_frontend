@@ -1,3 +1,4 @@
+/* Styling the login page */
 .login-form {
 	display: flex;
 	flex-direction: column;
@@ -7,7 +8,7 @@
 	min-height: 100vh;
 	padding: 10px;
 }
-
+/* Styling the heading */
 .login-heading {
 	display: flex;
 	justify-content: center;
@@ -15,7 +16,7 @@
 	padding: 10px;
 	margin: 10px;
 }
-
+/*  Styling the container */
 .login-container {
 	display: flex;
 	flex-direction: column;
@@ -25,7 +26,7 @@
 	border-radius: 20px;
 	padding: 10px;
 }
-
+/* Styling the form */
 #form {
 	display: flex;
 	flex-direction: column;
@@ -34,7 +35,7 @@
 	padding: 10px;
 	max-width: 100%;
 }
-
+/* Styling the inputs */
 #form input {
 	padding: 5px;
 	margin: 10px;
@@ -42,7 +43,7 @@
 	width: 100%;
 	border-bottom: 1px solid #83eaf1;
 }
-
+/* Styling the button */
 .login-btn {
 	width: 100%;
 	border: 2px solid #83eaf1;
@@ -53,7 +54,7 @@
 	margin: 10px;
 	color: #83eaf1;
 }
-
+/* Adding the hover effect on the button */
 .login-btn:hover {
 	background-color: #83eaf1;
 	color: white;

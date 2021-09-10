@@ -1,3 +1,4 @@
+/* Styling admin page */
 .admin-container {
 	width: 100vw;
 	min-height: 100vh;
@@ -5,7 +6,7 @@
 	justify-content: center;
 	align-items: center;
 }
-
+/* Styling the header */
 .admin-heading {
 	display: flex;
 	justify-content: center;
@@ -13,7 +14,7 @@
 	margin: 10px;
 	padding: 10px;
 }
-
+/* Styling the background of the form */
 .admin-fix {
 	background-color: #fff;
 	border-radius: 20px;
@@ -23,7 +24,7 @@
 	flex-direction: column;
 	padding: 10px;
 }
-
+/* Styling the form */
 #form {
 	max-width: 100%;
 	display: flex;
@@ -33,7 +34,7 @@
 	margin: 10px;
 	padding: 10px;
 }
-
+/* Styling the inputs */
 #form input {
 	width: 100%;
 	border: none;
@@ -41,7 +42,7 @@
 	margin: 10px;
 	border-bottom: 1px solid #83eaf1;
 }
-
+/* Styling the admin button */
 .admin-btn {
 	width: 100%;
 	border: 2px solid #83eaf1;
@@ -52,7 +53,7 @@
 	border-radius: 20px;
 	color: #83eaf1;
 }
-
+/* Adding hover effects */
 .admin-btn:hover {
 	border-radius: 20px;
 	background-color: #83eaf1;

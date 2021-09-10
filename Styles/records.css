@@ -1,9 +1,10 @@
+/* Styling the records heading */
 .records-heading {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
+/* Styling the records */
 #records {
 	display: flex;
 	align-items: center;
@@ -12,7 +13,7 @@
 	width: 100vw;
 	min-height: 100vh;
 }
-
+/* Styling the records container */
 .records-fix {
 	display: flex;
 	flex-direction: column;
@@ -20,8 +21,10 @@
 	align-items: center;
 	background-color: #fefefe;
 	padding: 10px;
+	position: absolute;
+	margin-top: 100px;
 }
-
+/* Displaying the information with grid */
 .records-container {
 	display: grid;
 	place-items: center;

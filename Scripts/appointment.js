@@ -1,7 +1,6 @@
 const baseURL = "https://desolate-meadow-13744.herokuapp.com/view-appointment/";
-let times = [];
-let d = new Date();
-
+let times = []; // put the details into the empty array
+// fetching the appointments to display
 fetch(baseURL)
 	.then((res) => res.json())
 	.then((data) => {
@@ -10,7 +9,7 @@ fetch(baseURL)
 		localStorage.setItem("appointment", JSON.stringify(times));
 		renderAppointment(times);
 	});
-
+// rendering the appointments
 function renderAppointment(times) {
 	let container = document.querySelector("#timetable");
 	container.innerHTML = "";
@@ -58,8 +57,9 @@ function renderAppointment(times) {
 				`;
 	});
 }
-
+// function for deleting the appointment
 function deleteAppointment(patient_id) {
+	// fetching the api route to delete the appointment
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/delete-appointment/${patient_id}`,
 		{
@@ -69,12 +69,13 @@ function deleteAppointment(patient_id) {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			// reloads if it is successful
 			if (data.status_code == 200) {
 				window.location.reload();
 			}
 		});
 }
-
+//  Modal
 function editModal(patient_id) {
 	document
 		.querySelector(`#edit-appoint-${patient_id}`)
@@ -88,6 +89,7 @@ function editAppointment(patient_id) {
 	const booking_date = document.querySelector(
 		`#booking_date-${patient_id}`,
 	).value;
+	// fetching the api route for editing
 	fetch(
 		`https://desolate-meadow-13744.herokuapp.com/edit-appointment/${patient_id}`,
 		{
@@ -98,6 +100,7 @@ function editAppointment(patient_id) {
 				type: type,
 				booking_date: booking_date,
 			}),
+			// To put the information in JSON Format
 			headers: {
 				"Content-type": "application/json; charset=UTF-8",
 			},
@@ -106,9 +109,16 @@ function editAppointment(patient_id) {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			// if it worked it will reload
+			if (data.status_code == 200) {
+				window.location.reload();
+			} else {
+				alert("Invalid Credentials!!!");
+				window.location.reload();
+			}
 		});
 }
-
+// function for the search bar
 function searchAppointment() {
 	let searchTerm = document.querySelector("#filter").value;
 	console.log(searchTerm);
@@ -118,11 +128,12 @@ function searchAppointment() {
 	console.log(searchedAppointments);
 	renderAppointment(searchedAppointments);
 }
-
+// function for sorting information
 function sortAppointments() {
 	let sort_appointments = document.querySelector("#sort-appointments");
 	console.log(sort_appointments.value);
 	let sortedAppointment = times;
+	// Name: Ascending
 	if (sort_appointments.value == "sort-appointments-name-ascending") {
 		sortedAppointment = times.sort((a, b) => {
 			if (a.first_name > b.first_name) return 1;
@@ -132,7 +143,7 @@ function sortAppointments() {
 
 		renderAppointment(sortedAppointment);
 	}
-
+	// Name: Descending
 	if (sort_appointments.value == "sort-appointments-name-descending") {
 		sortedAppointment = times.sort((a, b) => {
 			if (a.first_name > b.first_name) return 1;
@@ -142,7 +153,7 @@ function sortAppointments() {
 		sortedAppointment.reverse();
 		renderAppointment(sortedAppointment);
 	}
-
+	// Surname: Ascending
 	if (sort_appointments.value == "sort-appointments-surname-ascending") {
 		sortedAppointment = times.sort((a, b) => {
 			if (a.last_name > b.last_name) return 1;
@@ -152,7 +163,7 @@ function sortAppointments() {
 
 		renderAppointment(sortedAppointment);
 	}
-
+	// Surname: Descending
 	if (sort_appointments.value == "sort-appointments-surname-descending") {
 		sortedAppointment = times.sort((a, b) => {
 			if (a.last_name > b.last_name) return 1;
@@ -162,12 +173,12 @@ function sortAppointments() {
 		sortedAppointment.reverse();
 		renderAppointment(sortedAppointment);
 	}
-
+	// Patient_Id: Ascending
 	if (sort_appointments.value == "sort-appointments-patient_id-ascending") {
 		sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
 		renderAppointment(sortedAppointment);
 	}
-
+	// Patient_ID: Descending
 	if (sort_appointments.value == "sort-appointments-patient_id-descending") {
 		sortedAppointment = times.sort((a, b) => a.patient_id - b.patient_id);
 		sortedAppointment.reverse();

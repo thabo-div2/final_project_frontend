@@ -311,8 +311,8 @@ function addAppointment(patient_id) {
 				phone_num: phone_num,
 				type: type,
 				booking_date: booking_date,
-				start_date: start_date,
 			}),
+			// this header to make the information into JSON Format
 			headers: {
 				"Content-type": "application/json; charset=UTF-8",
 			},
@@ -321,6 +321,11 @@ function addAppointment(patient_id) {
 		.then((res) => res.json())
 		.then((data) => {
 			console.log(data);
+			// Displays if it works
+			if (data.status_code == 200) {
+				prompt(data.message);
+				window.location.href = "/appointments.html";
+			}
 		});
 }
 
@@ -341,6 +346,7 @@ function addIll(patient_id) {
 			type: i_type,
 			description: i_desc,
 		}),
+		// this header to make the information into JSON Format
 		headers: {
 			"Content-type": "application/json; charset=UTF-8",
 		},

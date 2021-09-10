@@ -1,9 +1,10 @@
+/* Displaying all the patients */
 #view-patients {
 	display: grid;
 	place-items: center;
 	grid-template-columns: repeat(3, 1fr);
 }
-
+/* Styling background */
 .patients {
 	display: flex;
 	flex-direction: column;
@@ -13,14 +14,14 @@
 	min-height: 100vh;
 	padding: 5px;
 }
-
+/*  Styling the patients information */
 .patient {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
-
+/* Adding an effects to the patients to make it look like a card */
 .card {
 	background: #fff;
 	border-radius: 2px;
@@ -33,12 +34,12 @@
 	height: 400px;
 	transition: all 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
+/* adding hover effects */
 .card:hover {
 	box-shadow: 0 14px 28px rgba(131, 234, 241, 0.25),
 		0 10px 10px rgba(131, 234, 241, 0.22);
 }
-
+/* Styling the patients container */
 .patient-container {
 	display: flex;
 	flex-direction: column;
@@ -48,7 +49,7 @@
 	padding: 5px;
 	margin-top: 50px;
 }
-
+/* Styling the heading for View Patients */
 .patient-heading {
 	padding: 5px;
 	margin: 10px;
@@ -67,11 +68,11 @@
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
-
+/* Displays the information when the modal is active */
 #modal.active {
 	display: flex;
 }
-
+/* Styling the modal background */
 .modal-bg {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
@@ -83,7 +84,7 @@
 	align-items: center;
 	flex-direction: column;
 }
-
+/* Modal */
 .add-appoint {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -96,11 +97,11 @@
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
-
+/* Displays information when the modal is active */
 .add-appoint.active {
 	display: flex;
 }
-
+/* Styling the modal background */
 .add-appoint-bg {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
@@ -113,7 +114,7 @@
 	justify-content: center;
 	align-items: center;
 }
-
+/* Styling the modal inputs */
 .add-appoint-bg input {
 	border: none;
 	border-bottom: 1px solid #83eaf1;
@@ -131,14 +132,14 @@
 	top: 230px;
 	right: 200px;
 }
-
+/* Adding effects to the close button */
 .close:hover,
 .close:focus {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
 }
-
+/* Modal */
 .show-modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -155,7 +156,7 @@
 .show-modal.active {
 	display: flex;
 }
-
+/* Styling the modal background */
 .show-bg {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
@@ -167,7 +168,7 @@
 	align-items: center;
 	flex-direction: column;
 }
-
+/* Modal */
 .edit-modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -180,11 +181,11 @@
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
-
+/* Displaying the information when the modal is active */
 .edit-modal.active {
 	display: flex;
 }
-
+/* Styling the modal background */
 .edit-bg {
 	background-color: #fefefe;
 	margin: 15% auto; /* 15% from the top and centered */
@@ -196,13 +197,14 @@
 	align-items: center;
 	flex-direction: column;
 }
+/* Styling the modal inputs */
 .edit-bg input {
 	border: none;
 	border-bottom: 1px solid #83eaf1;
 	padding: 5px;
 	margin: 10px;
 }
-
+/* Modal */
 .show-ill {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -215,7 +217,7 @@
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
-
+/* Displaying information when the modal is active  */
 .show-ill.active {
 	display: flex;
 }
@@ -232,18 +234,19 @@
 	align-items: center;
 	flex-direction: column;
 }
-
+/* Styling the modal background */
 .show-ill-bg input {
 	border: none;
 	border-bottom: 1px solid #83eaf1;
 }
-
+/* Styling Sort */
 .sort-btn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
+/* Styling Patients Details */
 .details {
 	padding: 10px;
 }
@@ -261,7 +264,7 @@
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
-
+/* Displays the information when the modal is active */
 .add-ill-modal.active {
 	display: flex;
 }
@@ -279,20 +282,21 @@
 	align-items: center;
 	flex-direction: column;
 }
-
+/* Styling the inputs */
 .add-ill-bg input {
 	border: none;
 	border-bottom: 1px solid #83eaf1;
 	padding: 5px;
 	margin: 10px;
 }
-
+/* Using grid to style the buttons */
 .patients-btn-container {
 	display: grid;
 	place-items: center;
 	grid-template-columns: repeat(2, 1fr);
 	margin: 5px;
 }
+/* Styling the buttons */
 .patients-btn {
 	border: none;
 	background-color: whitesmoke;
@@ -305,26 +309,26 @@
 	justify-content: center;
 	align-items: center;
 }
-
+/* Adding the effects to the button */
 .patients-btn:hover {
 	background-color: #83eaf1;
 	color: white;
 }
-
+/* Styling the filter */
 #filter {
 	border: none;
 	padding: 5px;
 	margin: 5px;
 	border-bottom: 1px solid #83eaf1;
 }
-
+/* Styling the filter */
 #patients-sort {
 	border: none;
 	padding: 5px;
 	margin: 5px;
 	border-bottom: 1px solid #83eaf1;
 }
-
+/* Styling the button */
 .sorted-btn {
 	border: none;
 	background-color: #83eaf1;
@@ -333,12 +337,12 @@
 	margin: 5px;
 	transition: 0.3s ease-in-out;
 }
-
+/* Adding the hover effects */
 .sorted-btn:hover {
 	background-color: #fff;
 	color: black;
 }
-
+/* Styling the button */
 .filter-btn {
 	border: none;
 	background-color: #83eaf1;
@@ -347,7 +351,7 @@
 	margin: 5px;
 	transition: 0.3s ease-in-out;
 }
-
+/* Adding hover effects to button */
 .filter-btn:hover {
 	background-color: #fff;
 	color: black;

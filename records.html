@@ -42,10 +42,12 @@
 				<div class="records-heading">
 					<h1>Records</h1>
 				</div>
+				<!-- Search bar -->
 				<div class="filter-container">
 					<input type="text" placeholder="Search..." id="filter" required />
 					<button class="records-btn" onclick="searchIllness()">Search</button>
 				</div>
+				<!-- Sorting the information -->
 				<div class="sort-btn">
 					<select id="sort-records">
 						<option value="select-sort" disabled selected>Sort Records:</option>
@@ -60,6 +62,7 @@
 					</select>
 					<button class="records-btn" onclick="sortRecords()">Sort</button>
 				</div>
+				<!-- Displaying the records -->
 				<div class="records-container"></div>
 			</div>
 		</div>

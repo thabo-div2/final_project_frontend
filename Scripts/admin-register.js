@@ -25,5 +25,11 @@ function adminRegistration() {
 		.then((data) => {
 			// to see what information is going into the api
 			console.log(data);
+			// if data is correct go to the next page
+			if (data.status_code == 201) {
+				window.location.href = "/login.html";
+			} else {
+				alert("Invalid Credentials!!!!");
+			}
 		});
 }
